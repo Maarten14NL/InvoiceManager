@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using InvoiceManager.Services;
 
 namespace InvoiceManager.Controllers
 {
@@ -10,11 +11,15 @@ namespace InvoiceManager.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 
         public ActionResult About()
         {
+            InvoiceService test = new InvoiceService();
+            test.Generate();
+
             ViewBag.Message = "Your application description page.";
 
             return View();
