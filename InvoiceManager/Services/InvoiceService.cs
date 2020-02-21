@@ -209,22 +209,14 @@ namespace InvoiceManager.Services
 
                 //close Document
                 invoice.Close(ref missing, ref missing, ref missing);
-                this.deleteFile(templatePath + "\\" + invoiceName + ".docx");
+                this.DeleteFile(templatePath + "\\" + invoiceName + ".docx");
             }
         }
 
-        private void addToZip(string path)
-        {
-            string templatePath = GetDataFilePath();
-        }
-
-        private void deleteFile(string path)
+        private void DeleteFile(string path)
         {
             if (System.IO.File.Exists(path))
             {
-                // Use a try block to catch IOExceptions, to
-                // handle the case of the file already being
-                // opened by another process.
                 try
                 {
                     System.IO.File.Delete(path);
