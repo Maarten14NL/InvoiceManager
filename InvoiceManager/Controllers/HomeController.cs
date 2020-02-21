@@ -17,8 +17,8 @@ namespace InvoiceManager.Controllers
 
         public ActionResult About()
         {
-            InvoiceService test = new InvoiceService();
-            test.Generate();
+            InvoiceService invoiceService = new InvoiceService();
+            invoiceService.Generate();
 
             ViewBag.Message = "Your application description page.";
 
