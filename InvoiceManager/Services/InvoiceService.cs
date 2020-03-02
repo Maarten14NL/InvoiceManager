@@ -21,6 +21,8 @@ namespace InvoiceManager.Services
             return View();
         }
 
+        private readonly FileService fileService = new FileService();
+
         private static object missing = Missing.Value;
          
         private void ReplacePlaceHolders(word.Application wordApp, object findText, object replaceText)
@@ -159,7 +161,7 @@ namespace InvoiceManager.Services
 
             object fileName = templatePath + "\\invoiceTemplate.docx";
             object invoiceFileName = templatePath + "\\"+ invoiceName+".docx";
-            System.IO.File.Copy(fileName.ToString(), invoiceFileName.ToString(), true);
+            fileService.CopyFile(fileName.ToString(), invoiceFileName.ToString());
 
             word.Application wordApp = new word.Application();
             word.Document invoice = null;
@@ -209,23 +211,8 @@ namespace InvoiceManager.Services
 
                 //close Document
                 invoice.Close(ref missing, ref missing, ref missing);
-                this.DeleteFile(templatePath + "\\" + invoiceName + ".docx");
-            }
-        }
-
-        private void DeleteFile(string path)
-        {
-            if (System.IO.File.Exists(path))
-            {
-                try
-                {
-                    System.IO.File.Delete(path);
-                }
-                catch (System.IO.IOException e)
-                {
-                    Console.WriteLine(e.Message);
-                    return;
-                }
+                fileService.Zip(templatePath, "invoice.zip", saveAs.ToString());
+                fileService.DeleteFile(templatePath + "\\" + invoiceName + ".docx");
             }
         }
     }
