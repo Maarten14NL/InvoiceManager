@@ -47,10 +47,6 @@ namespace InvoiceManager.Services
         public void Zip(string location, string zipFile, string documentFile)
         {
             string zipPath = location + "\\" + zipFile;
-            if (!System.IO.File.Exists(zipPath))
-            {
-                ZipFile.CreateFromDirectory(location, zipPath);
-            }
 
             var zip = ZipFile.Open(zipPath, ZipArchiveMode.Update);
             zip.CreateEntryFromFile(documentFile, "test.pdf");
