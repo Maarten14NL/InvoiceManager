@@ -47,9 +47,10 @@ namespace InvoiceManager.Services
         public void Zip(string location, string zipFile, string documentFile)
         {
             string zipPath = location + "\\" + zipFile;
+            string fileName = Path.GetFileName(documentFile);
 
             var zip = ZipFile.Open(zipPath, ZipArchiveMode.Update);
-            zip.CreateEntryFromFile(documentFile, "test.pdf");
+            zip.CreateEntryFromFile(documentFile, fileName);
             zip.Dispose();
         }
     }
