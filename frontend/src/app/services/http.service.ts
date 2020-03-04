@@ -8,12 +8,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class HttpService {
 
-    constructor( private http:HttpClient ) {}
+    constructor( private http: HttpClient ) {}
 
     public url: string = '';
     public data: Array<any> = [];
 
-    private returnData;
     // Uses http.get() to load data from a single API endpoint
     get() {
         return this.http.get(this.url).subscribe(
