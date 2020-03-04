@@ -2,6 +2,15 @@ import { NbJSThemeOptions, CORPORATE_THEME as baseTheme } from '@nebular/theme';
 
 const baseThemeVariables = baseTheme.variables;
 
+console.table(baseTheme)
+
+baseThemeVariables.primary = "#fd6400";
+baseThemeVariables.primaryLight= "#ff8d00";
+baseThemeVariables.success = "#000099";
+baseThemeVariables.successLight = "#c7e8f1"
+
+console.table(baseThemeVariables)
+
 export const CORPORATE_THEME = {
   name: 'corporate',
   base: 'corporate',

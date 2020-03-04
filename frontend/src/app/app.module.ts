@@ -20,6 +20,7 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { HttpService} from './services/http.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,7 +43,9 @@ import {
     }),
     CoreModule.forRoot(),
   ],
+  providers: [HttpService],
   bootstrap: [AppComponent],
+  
 })
 export class AppModule {
 }

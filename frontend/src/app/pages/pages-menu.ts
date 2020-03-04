@@ -44,6 +44,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Generate',
+    icon: 'file-text-outline',
+    children: [
+      {
+        title: 'Invoice',
+        link: '/pages/generate/invoice',
+      },
+    ],
+  },
+  {
     title: 'Forms',
     icon: 'edit-2-outline',
     children: [
