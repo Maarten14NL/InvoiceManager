@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { fruits } from './fruits-list';
-import { generate } from 'rxjs';
-import { HttpService } from '../../../services/http.service'
+// import { generate } from 'rxjs';
+import { HttpService } from '../../../services/http.service';
 
 @Component({
   selector: 'ngx-list',
@@ -23,7 +23,7 @@ export class InvoiceComponent {
   foods;
   generateInvoices() {
     this.http.url = 'http://ergast.com/api/f1/seasons.json';
-    
-    console.log(this.http.get())
+
+    // console.log(this.http.get());
   }
 }

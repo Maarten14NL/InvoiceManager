@@ -45,7 +45,7 @@ import { HttpService} from './services/http.service';
   ],
   providers: [HttpService],
   bootstrap: [AppComponent],
-  
+
 })
 export class AppModule {
 }

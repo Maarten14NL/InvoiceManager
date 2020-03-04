@@ -13,6 +13,8 @@ export class HttpService {
     public url: string = '';
     public data: Array<any> = [];
 
+    returnData = {};
+
     // Uses http.get() to load data from a single API endpoint
     get() {
         return this.http.get(this.url).subscribe(
