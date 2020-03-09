@@ -5,9 +5,11 @@ import {
   NbButtonModule,
   NbCardModule,
   NbListModule,
+  NbSpinnerModule,
   NbRouteTabsetModule,
   NbStepperModule,
   NbTabsetModule, NbUserModule,
+  NbCheckboxModule,
 } from '@nebular/theme';
 
 import { ThemeModule } from '../../@theme/theme.module';
@@ -27,10 +29,12 @@ import { InvoiceComponent } from './invoice/invoice.component';
     NbStepperModule,
     NbCardModule,
     NbButtonModule,
+    NbSpinnerModule,
     NbListModule,
     NbAccordionModule,
     NbUserModule,
     GenerateRoutingModule,
+    NbCheckboxModule,
   ],
   declarations: [
     InvoiceComponent,

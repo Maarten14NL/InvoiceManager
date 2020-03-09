@@ -21,6 +21,7 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { HttpService} from './services/http.service';
+import { AlertService } from './services/alert.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,7 +44,10 @@ import { HttpService} from './services/http.service';
     }),
     CoreModule.forRoot(),
   ],
-  providers: [HttpService],
+  providers: [
+    HttpService, 
+    AlertService
+  ],
   bootstrap: [AppComponent],
 
 })

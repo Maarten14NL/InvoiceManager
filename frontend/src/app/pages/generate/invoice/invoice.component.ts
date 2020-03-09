@@ -2,14 +2,18 @@ import { Component } from '@angular/core';
 import { fruits } from './fruits-list';
 // import { generate } from 'rxjs';
 import { HttpService } from '../../../services/http.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
-  selector: 'ngx-list',
+  selector: 'ngx-spinner',
   templateUrl: 'invoice.component.html',
   styleUrls: ['invoice.component.scss'],
 })
 export class InvoiceComponent {
-  constructor(private http: HttpService) { }
+  constructor(
+    private http: HttpService,
+    private alert: AlertService
+  ) { }
 
   fruits = fruits;
 
@@ -20,10 +24,41 @@ export class InvoiceComponent {
     { name: 'Perry Cox', title: 'Doctor of Medicine' },
     { name: 'Ben Sullivan', title: 'Carpenter and photographer' },
   ];
-  foods;
-  generateInvoices() {
-    this.http.url = 'http://ergast.com/api/f1/seasons.json';
 
-    // console.log(this.http.get());
+  receivingData = false;
+  downloadReady = false;
+
+  generateInvoices() {
+    let d;
+    this.receivingData = true;
+
+    this.http.Get("https://localhost:44372/invoice/generate").subscribe(
+      data => {
+        d = data;
+        this.alert.Success('invoice is generated');
+        this.receivingData = false;
+        this.downloadReady = true;
+      },
+      err => {
+        this.alert.Error(err.message)
+        this.receivingData = false;
+      },
+    );
+  }
+  downloading = false;
+  downloadInvoices() {
+    this.downloading = true;
+    this.http.Get("https://localhost:44372/invoice/download").subscribe(
+      data => {
+        this.alert.Success('invoice is generated');
+        this.downloading = false;
+        this.downloadReady = false;
+      },
+      err => {
+        this.alert.Error(err.message)
+        this.downloading = false;
+      },
+    );
+
   }
 }

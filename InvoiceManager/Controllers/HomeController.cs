@@ -7,6 +7,7 @@ using InvoiceManager.Services;
 
 namespace InvoiceManager.Controllers
 {
+    [AllowCrossSiteJsonAttribute]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -22,7 +23,7 @@ namespace InvoiceManager.Controllers
 
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return Json(new { foo = "bar", baz = "Blech" }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Contact()

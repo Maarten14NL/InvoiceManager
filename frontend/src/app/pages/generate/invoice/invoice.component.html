@@ -5,26 +5,26 @@
       <nb-card-body>
         <nb-list>
           <nb-list-item *ngFor="let fruit of fruits">
-            {{ fruit }}
+            <nb-checkbox>{{ fruit }}</nb-checkbox>
           </nb-list-item>
         </nb-list>
       </nb-card-body>
     </nb-card>
   </div>
-
-  <div class="col-md-12 col-lg-6 col-xxxl-6">
-    <nb-card class="list-card" size="small">
-      <nb-card-header>Users</nb-card-header>
-      <nb-list>
-        <nb-list-item *ngFor="let user of users">
-          <nb-user [name]="user.name" [title]="user.title">
-          </nb-user>
-        </nb-list-item>
-      </nb-list>
-    </nb-card>
-  </div>
 </div>
 
-<button nbButton [status]="primary" hero (click)="generateInvoices()">
-  Generate
-</button>
+<nb-card>
+  <nb-card-body>
+    <div class="buttons-row">
+      <button nbButton status="primary" size="large" (click)="generateInvoices()" [nbSpinner]="receivingData"
+        nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
+        Generate
+      </button>
+
+      <button nbButton outline status="primary" size="large" (click)="downloadInvoices()" [nbSpinner]="downloading" [disabled]="!downloadReady"
+        nbSpinnerStatus="primary" nbSpinnerSize="large" nbSpinnerMessage="">
+        Download Invoices
+      </button>
+    </div>
+  </nb-card-body>
+</nb-card>
