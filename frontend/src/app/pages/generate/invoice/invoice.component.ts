@@ -12,7 +12,7 @@ import { AlertService } from '../../../services/alert.service';
 export class InvoiceComponent {
   constructor(
     private http: HttpService,
-    private alert: AlertService
+    private alert: AlertService,
   ) { }
 
   fruits = fruits;
@@ -32,7 +32,7 @@ export class InvoiceComponent {
     let d;
     this.receivingData = true;
 
-    this.http.Get("https://localhost:44372/invoice/generate").subscribe(
+    this.http.Get('https://localhost:44372/invoice/generate').subscribe(
       data => {
         d = data;
         this.alert.Success('invoice is generated');
@@ -40,7 +40,7 @@ export class InvoiceComponent {
         this.downloadReady = true;
       },
       err => {
-        this.alert.Error(err.message)
+        this.alert.Error(err.message);
         this.receivingData = false;
       },
     );
@@ -48,14 +48,14 @@ export class InvoiceComponent {
   downloading = false;
   downloadInvoices() {
     this.downloading = true;
-    this.http.Get("https://localhost:44372/invoice/download").subscribe(
+    this.http.Get('https://localhost:44372/invoice/download').subscribe(
       data => {
         this.alert.Success('invoice is generated');
         this.downloading = false;
         this.downloadReady = false;
       },
       err => {
-        this.alert.Error(err.message)
+        this.alert.Error(err.message);
         this.downloading = false;
       },
     );

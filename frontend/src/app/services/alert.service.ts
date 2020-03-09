@@ -7,12 +7,11 @@ import {
     NbGlobalLogicalPosition,
     NbGlobalPhysicalPosition,
     NbGlobalPosition,
-    NbToastrService,
 } from '@nebular/theme';
 
 @Injectable()
 export class AlertService {
-    constructor(private toastrService: NbToastrService) { }
+    constructor() { }
 
     config: ToasterConfig;
 
@@ -44,39 +43,21 @@ export class AlertService {
 
     Error = function (description) {
         this.showToast('danger', 'Error', description);
-    }
+    };
 
     Success = function (description) {
         this.showToast('success', 'Success', description);
-    }
+    };
 
     Info = function (description) {
         this.showToast('info', 'Info', description);
-    }
+    };
 
     Warning = function (description) {
         this.showToast('warning', 'Warning', description);
-    }
+    };
 
     Primary = function (description) {
         this.showToast('primary', 'Primary', description);
-    }
-
-    private showToast(type: NbComponentStatus, title: string, body: string) {
-        const config = {
-            status: type,
-            destroyByClick: this.destroyByClick,
-            duration: this.duration,
-            hasIcon: this.hasIcon,
-            position: this.position,
-            preventDuplicates: this.preventDuplicates,
-        };
-        const titleContent = title ? title : '';
-
-        this.index += 1;
-        this.toastrService.show(
-            body,
-            titleContent,
-            config);
-    }
+    };
 }

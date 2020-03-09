@@ -45,8 +45,8 @@ import { AlertService } from './services/alert.service';
     CoreModule.forRoot(),
   ],
   providers: [
-    HttpService, 
-    AlertService
+    HttpService,
+    AlertService,
   ],
   bootstrap: [AppComponent],
 
