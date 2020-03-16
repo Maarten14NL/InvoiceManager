@@ -1,27 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json; charset=utf-8',
+    }),
 };
 
 @Injectable()
 export class HttpService {
 
-    constructor() { }
+    constructor(private _http: HttpClient) { }
 
     public url: string = '';
     public data: Array<any> = [];
-
     returnData = {};
 
     // Uses http.get() to load data from a single API endpoint
     Get = function (url) {
-        return this.http.get(url);
+        return this._http.get(url);
     };
 
     Post = function (url, data) {
-        return this.http.post(url, data, httpOptions);
+
+        const body = new FormData();
+        body.append('data', JSON.stringify(data));
+
+
+        return this._http.post(url, body);
     };
 
     DownLoadFile = function (url) {
@@ -32,6 +38,6 @@ export class HttpService {
             }),
         };
 
-        return this.http.get(url, downloadOptions);
+        return this._http.get(url, downloadOptions);
     };
 }

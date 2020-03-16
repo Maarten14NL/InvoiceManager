@@ -24,6 +24,11 @@ const routes: Routes = [{
         .then(m => m.LayoutModule),
     },
     {
+      path: 'contracts',
+      loadChildren: () => import('./contracts/contracts.module')
+        .then(m => m.ContractsModule),
+    },
+    {
       path: 'generate',
       loadChildren: () => import('./generate/generate.module')
         .then(m => m.GenerateModule),
