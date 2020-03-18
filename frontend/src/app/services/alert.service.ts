@@ -11,7 +11,7 @@ import {
 
 @Injectable()
 export class AlertService {
-    constructor() { }
+    // constructor(private _toastrService: NbToastrService) { }
 
     config: ToasterConfig;
 
@@ -42,22 +42,40 @@ export class AlertService {
     ];
 
     Error = function (description) {
-        this.showToast('danger', 'Error', description);
+        this._showToast('danger', 'Error', description);
     };
 
     Success = function (description) {
-        this.showToast('success', 'Success', description);
+        this._showToast('success', 'Success', description);
     };
 
     Info = function (description) {
-        this.showToast('info', 'Info', description);
+        this._showToast('info', 'Info', description);
     };
 
     Warning = function (description) {
-        this.showToast('warning', 'Warning', description);
+        this._showToast('warning', 'Warning', description);
     };
 
     Primary = function (description) {
-        this.showToast('primary', 'Primary', description);
+        this._showToast('primary', 'Primary', description);
+    };
+
+    _showToast = function (type: NbComponentStatus, title: string, body: string) {
+        const config = {
+            status: type,
+            destroyByClick: this.destroyByClick,
+            duration: this.duration,
+            hasIcon: this.hasIcon,
+            position: this.position,
+            preventDuplicates: this.preventDuplicates,
+        };
+        const titleContent = title ? title : '';
+
+        this.index += 1;
+        this.NbToastrService.show(
+            body,
+            titleContent,
+            config);
     };
 }
