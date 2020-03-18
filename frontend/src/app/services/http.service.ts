@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
-const httpOptions = {
-    headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-    }),
-};
+// const httpOptions = {
+//     headers: new HttpHeaders({
+//         'Content-Type': 'application/json; charset=utf-8',
+//     }),
+// };
 
 @Injectable()
 export class HttpService {
 
-    constructor(private _http: HttpClient) { }
+    // constructor(private _http: HttpClient) { }
 
     public url: string = '';
     public data: Array<any> = [];
@@ -27,7 +27,7 @@ export class HttpService {
         body.append('data', JSON.stringify(data));
 
 
-        return this._http.post(url, body);
+        return this.HttpClient.post(url, body);
     };
 
     DownLoadFile = function (url) {
@@ -38,6 +38,6 @@ export class HttpService {
             }),
         };
 
-        return this._http.get(url, downloadOptions);
+        return this.HttpClient.get(url, downloadOptions);
     };
 }
