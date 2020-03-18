@@ -66,9 +66,9 @@ export class SmartTableComponent {
     );
   }
 
-  onCreateConfirm( event ): void{
+  onCreateConfirm( event ): void {
     const contract = event.newData;
-    if ( contract.Name && contract.Description && contract.Price ){
+    if ( contract.Name && contract.Description && contract.Price ) {
       this.http.Post('https://localhost:44372/contract/create', contract).subscribe(
         data => {
           this.alert.Success('invoice is generated');
@@ -82,8 +82,8 @@ export class SmartTableComponent {
 
   onEditConfirm( event ): void {
     const contract = event.newData;
-    if (event.data !== contract){
-      if ( contract.Name && contract.Description && contract.Price ){
+    if (event.data !== contract) {
+      if ( contract.Name && contract.Description && contract.Price ) {
         this.http.Post('https://localhost:44372/contract/edit', contract).subscribe(
         data => { this.alert.Success('invoice is generated'); },
         err => { this.alert.Error(err.message); },
