@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using InvoiceManager.Services;
+using InvoiceManager_Logic;
 
 namespace InvoiceManager.Controllers
 {
@@ -15,10 +18,12 @@ namespace InvoiceManager.Controllers
 
             return View();
         }
-
+        private static string GetDataFilePath() => HttpRuntime.AppDomainAppVirtualPath != null ?
+    Path.Combine(HttpRuntime.AppDomainAppPath, "App_templates") :
+    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public ActionResult About()
         {
-            InvoiceService invoiceService = new InvoiceService();
+            GenerateInvoice invoiceService = new GenerateInvoice(GetDataFilePath());
             invoiceService.Generate();
 
             ViewBag.Message = "Your application description page.";

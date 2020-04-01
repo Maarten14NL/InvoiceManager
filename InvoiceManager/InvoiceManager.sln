@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager", "InvoiceMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager.Tests", "..\InvoiceManager.Tests\InvoiceManager.Tests.csproj", "{B66213F2-F1BF-4980-9F3E-9C5CCD9EDBD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager_Logic", "..\InvoiceManager_Logic\InvoiceManager_Logic.csproj", "{0C53BCD1-C30E-4B63-ADE7-10AADEE0E4A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager_Database", "..\InvoiceManager_Database\InvoiceManager_Database.csproj", "{A7D60C38-8BB4-42E6-837C-5E0F20271AE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B66213F2-F1BF-4980-9F3E-9C5CCD9EDBD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B66213F2-F1BF-4980-9F3E-9C5CCD9EDBD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B66213F2-F1BF-4980-9F3E-9C5CCD9EDBD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C53BCD1-C30E-4B63-ADE7-10AADEE0E4A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C53BCD1-C30E-4B63-ADE7-10AADEE0E4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C53BCD1-C30E-4B63-ADE7-10AADEE0E4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C53BCD1-C30E-4B63-ADE7-10AADEE0E4A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D60C38-8BB4-42E6-837C-5E0F20271AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D60C38-8BB4-42E6-837C-5E0F20271AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D60C38-8BB4-42E6-837C-5E0F20271AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D60C38-8BB4-42E6-837C-5E0F20271AE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

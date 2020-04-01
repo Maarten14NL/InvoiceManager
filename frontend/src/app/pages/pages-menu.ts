@@ -46,12 +46,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Contracts',
     icon: 'archive-outline',
-    children: [
-      {
-        title: 'All',
-        link: '/pages/contracts/smart-table',
-      },
-    ],
+    link: '/pages/contracts/smart-table',
   },
   {
     title: 'Generate',

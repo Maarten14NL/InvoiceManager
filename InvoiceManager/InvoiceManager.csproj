@@ -365,6 +365,12 @@
       <DependentUpon>202003091431159_AddContract1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InvoiceManager_Logic\InvoiceManager_Logic.csproj">
+      <Project>{0c53bcd1-c30e-4b63-ade7-10aadee0e4a0}</Project>
+      <Name>InvoiceManager_Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

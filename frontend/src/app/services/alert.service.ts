@@ -7,11 +7,12 @@ import {
     NbGlobalLogicalPosition,
     NbGlobalPhysicalPosition,
     NbGlobalPosition,
+    NbToastrService,
 } from '@nebular/theme';
 
 @Injectable()
 export class AlertService {
-    // constructor(private _toastrService: NbToastrService) { }
+    constructor(private _toastrService: NbToastrService) { }
 
     config: ToasterConfig;
 
@@ -73,7 +74,7 @@ export class AlertService {
         const titleContent = title ? title : '';
 
         this.index += 1;
-        this.NbToastrService.show(
+        this._toastrService.show(
             body,
             titleContent,
             config);

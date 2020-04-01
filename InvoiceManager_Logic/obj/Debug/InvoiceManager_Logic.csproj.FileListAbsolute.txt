@@ -1,0 +1,9 @@
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Debug\InvoiceManager_Logic.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Debug\InvoiceManager_Logic.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Debug\InvoiceManager_Logic.csprojAssemblyReference.cache
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Debug\InvoiceManager_Logic.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Debug\InvoiceManager_Logic.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Debug\InvoiceManager_Database.exe
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Debug\InvoiceManager_Database.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Debug\InvoiceManager_Database.exe.config
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Debug\InvoiceManager_Logic.csproj.CopyComplete

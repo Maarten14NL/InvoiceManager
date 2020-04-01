@@ -145,3 +145,8 @@ C:\fontys\git\InvoiceManager\InvoiceManager\bin\System.Memory.xml
 C:\fontys\git\InvoiceManager\InvoiceManager\bin\System.Numerics.Vectors.xml
 C:\fontys\git\InvoiceManager\InvoiceManager\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\fontys\git\InvoiceManager\InvoiceManager\bin\System.Text.Encodings.Web.xml
+C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Logic.dll
+C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Logic.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Database.exe
+C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Database.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Database.exe.config
