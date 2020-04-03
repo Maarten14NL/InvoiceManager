@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompanyCrud.cs" />
+    <Compile Include="CompanyDto.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ContractDto.cs" />
     <Compile Include="ContractsCrud.cs" />
