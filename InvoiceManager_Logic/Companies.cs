@@ -37,49 +37,45 @@ namespace InvoiceManager_Logic
 
             return test;
         }
-        public void Create(ContractEntity contract)
+        public void Create(Company company)
         {
-            ContractDto test = new ContractDto();
-
-            test.Id = contract.Id;
-            test.Name = contract.Name;
-            test.Description = contract.Description;
-            test.Price = contract.Price;
-            test.Hide = contract.Hide;
-
 
             ContractsCrud contracts = new ContractsCrud();
-            contracts.Create(test);
+            contracts.Create(SetContractDto(company));
         }
 
-        public void Update(ContractEntity contract)
+        public void Update(Company company)
         {
-            ContractDto test = new ContractDto();
-
-            test.Id = contract.Id;
-            test.Name = contract.Name;
-            test.Description = contract.Description;
-            test.Price = contract.Price;
-            test.Hide = contract.Hide;
 
             ContractsCrud contracts = new ContractsCrud();
-            contracts.Update(test);
+            contracts.Update(SetContractDto(company));
 
         }
 
-        public void Delete(ContractEntity contract)
+        public void Delete(Company company)
+        {
+
+            ContractsCrud contracts = new ContractsCrud();
+            contracts.Delete(SetContractDto(company));
+
+        }
+
+        private ContractDto SetContractDto(Company company)
         {
             ContractDto test = new ContractDto();
 
-            test.Id = contract.Id;
-            test.Name = contract.Name;
-            test.Description = contract.Description;
-            test.Price = contract.Price;
-            test.Hide = contract.Hide;
+            test.Id = company.Id;
+            test.Name = company.Name;
+            test.CustomerNumber = company.CustomerNumber;
+            test.Iban = company.Iban;
+            test.IbanAscription = company.IbanAscription;
+            test.PhoneNumber = company.PhoneNumber;
+            test.Website = company.Website;
+            test.Email = company.Email;
+            test.MandateDate = company.MandateDate;
+            test.Hide = company.Hide;
 
-            ContractsCrud contracts = new ContractsCrud();
-            contracts.Delete(test);
-
+            return test;
         }
     }
 }
