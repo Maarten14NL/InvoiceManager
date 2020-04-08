@@ -44,6 +44,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Companies',
+    icon: 'archive-outline',
+    link: '/pages/companies/smart-table',
+  },
+  {
     title: 'Contracts',
     icon: 'archive-outline',
     link: '/pages/contracts/smart-table',

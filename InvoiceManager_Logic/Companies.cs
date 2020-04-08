@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using InvoiceManager_Database;
 
 namespace InvoiceManager_Logic
 {
     public class Companies
     {
-        public List<Company> Index()
+        public List<CompanyEntity> Index()
         {
             //new List<ContractModel>();
             CompanyCrud companies = new CompanyCrud();
             List<CompanyDto> companiesList = companies.FindAll();
-            List<Company> test = new List<Company>();
+            List<CompanyEntity> test = new List<CompanyEntity>();
 
             foreach (var company in companiesList)
             {
-                Company c = new Company(
+                CompanyEntity c = new CompanyEntity(
                     company.Id,
                     company.Name,
                     company.CustomerNumber,
@@ -28,7 +27,7 @@ namespace InvoiceManager_Logic
                     company.PhoneNumber,
                     company.Website,
                     company.Email,
-                    company.MandateDate,
+                    Convert.ToString(company.MandateDate),
                     company.Hide
                 );
 
@@ -37,32 +36,32 @@ namespace InvoiceManager_Logic
 
             return test;
         }
-        public void Create(Company company)
-        {
 
-            ContractsCrud contracts = new ContractsCrud();
+        public void Create(CompanyEntity company)
+        {
+            CompanyCrud contracts = new CompanyCrud();
             contracts.Create(SetContractDto(company));
         }
 
-        public void Update(Company company)
+        public void Update(CompanyEntity company)
         {
 
-            ContractsCrud contracts = new ContractsCrud();
+            CompanyCrud contracts = new CompanyCrud();
             contracts.Update(SetContractDto(company));
 
         }
 
-        public void Delete(Company company)
+        public void Delete(CompanyEntity company)
         {
 
-            ContractsCrud contracts = new ContractsCrud();
+            CompanyCrud contracts = new CompanyCrud();
             contracts.Delete(SetContractDto(company));
 
         }
 
-        private ContractDto SetContractDto(Company company)
+        private CompanyDto SetContractDto(CompanyEntity company)
         {
-            ContractDto test = new ContractDto();
+            CompanyDto test = new CompanyDto();
 
             test.Id = company.Id;
             test.Name = company.Name;
@@ -72,7 +71,7 @@ namespace InvoiceManager_Logic
             test.PhoneNumber = company.PhoneNumber;
             test.Website = company.Website;
             test.Email = company.Email;
-            test.MandateDate = company.MandateDate;
+            test.MandateDate = string.IsNullOrWhiteSpace(company.MandateDate) ? (DateTime?)null : DateTime.Parse(company.MandateDate);
             test.Hide = company.Hide;
 
             return test;

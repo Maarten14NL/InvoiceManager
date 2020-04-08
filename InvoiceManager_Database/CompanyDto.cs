@@ -16,7 +16,7 @@ namespace InvoiceManager_Database
         public string PhoneNumber;
         public string Website;
         public string Email;
-        public DateTime MandateDate;
+        public Nullable<DateTime> MandateDate;
         public bool Hide;
     }
 }
