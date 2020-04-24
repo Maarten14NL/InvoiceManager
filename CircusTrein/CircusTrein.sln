@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT_Logic", "CT_Logic\CT_Logic.csproj", "{0A6D4260-AB00-4809-9CBC-FD09C1281E15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT_UI", "CT_UI\CT_UI.csproj", "{58A36C10-46CE-4820-8FDD-B82049A13C49}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A6D4260-AB00-4809-9CBC-FD09C1281E15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6D4260-AB00-4809-9CBC-FD09C1281E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6D4260-AB00-4809-9CBC-FD09C1281E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6D4260-AB00-4809-9CBC-FD09C1281E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A36C10-46CE-4820-8FDD-B82049A13C49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A36C10-46CE-4820-8FDD-B82049A13C49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A36C10-46CE-4820-8FDD-B82049A13C49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A36C10-46CE-4820-8FDD-B82049A13C49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {168A7D56-EEAE-45BF-8727-C0F93F68B1C1}
+	EndGlobalSection
+EndGlobal
