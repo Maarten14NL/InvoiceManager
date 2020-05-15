@@ -89,6 +89,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompaniesTests.cs" />
+    <Compile Include="ContractsTests.cs" />
+    <Compile Include="Controllers\ContractControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -102,6 +105,10 @@
     <ProjectReference Include="..\InvoiceManager\InvoiceManager.csproj">
       <Project>{0BF84C1E-43DB-4588-A7C3-12261BDDA828}</Project>
       <Name>InvoiceManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InvoiceManager_Logic\InvoiceManager_Logic.csproj">
+      <Project>{0C53BCD1-C30E-4B63-ADE7-10AADEE0E4A0}</Project>
+      <Name>InvoiceManager_Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

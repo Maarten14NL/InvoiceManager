@@ -54,7 +54,7 @@ export class SmartTableComponent {
     private http: HttpService,
     private alert: AlertService,
   ) {
-    this.http.Get('https://localhost:44372/contract').subscribe(
+    this.http.Get('https://localhost:44372/contract/read').subscribe(
       data => {
         this.source.load(data.contracts);
 

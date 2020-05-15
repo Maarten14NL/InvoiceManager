@@ -32,5 +32,20 @@ namespace InvoiceManager_Logic
             this.MandateDate = MandateDate;
             this.Hide = Hide;
         }
+
+        public bool Valid()
+        {
+            if(
+                Name == null ||
+                Iban == null ||
+                IbanAscription == null ||
+                Email == null ||
+                MandateDate == null
+                )
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

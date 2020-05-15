@@ -10,36 +10,45 @@ namespace InvoiceManager_Database
     {
 
         private Connection con = new Connection();
-        public List<CompanyDto> FindAll()
+        public List<CompanyDto> Read(int? id = null)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT * ");
             sb.Append("FROM [Companies] cp ");
+            if(id != null)
+            {
+                sb.Append("Where Id = " + id);
+            }
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Query(sql, "SELECT");
+            var reader = conn.Select(sql);
 
             List<CompanyDto> ContractList = new List<CompanyDto>();
             while (reader.Read())
             {
-                CompanyDto company = new CompanyDto();
-                company.Id = Convert.ToInt32(reader["Id"]);
-                company.Name = Convert.ToString(reader["Name"]);
-                company.CustomerNumber = Convert.ToString(reader["CustomerNumber"]);
-                company.Iban = Convert.ToString(reader["Iban"]);
-                company.IbanAscription = Convert.ToString(reader["IbanAscription"]);
-                company.PhoneNumber = Convert.ToString(reader["PhoneNumber"]);
-                company.Website = Convert.ToString(reader["Website"]);
-                company.Email = Convert.ToString(reader["Email"]);
-                company.MandateDate = Convert.ToDateTime(reader["MandateDate"]);
-
-                company.Hide = Convert.ToBoolean(reader["Hide"]);
-
-                ContractList.Add(company);
+                ContractList.Add(this.Company(reader));
             }
 
             return ContractList;
+        }
+
+        public CompanyDto Company(dynamic data)
+        {
+            CompanyDto company = new CompanyDto();
+            company.Id = Convert.ToInt32(data["Id"]);
+            company.Name = Convert.ToString(data["Name"]);
+            company.CustomerNumber = Convert.ToString(data["CustomerNumber"]);
+            company.Iban = Convert.ToString(data["Iban"]);
+            company.IbanAscription = Convert.ToString(data["IbanAscription"]);
+            company.PhoneNumber = Convert.ToString(data["PhoneNumber"]);
+            company.Website = Convert.ToString(data["Website"]);
+            company.Email = Convert.ToString(data["Email"]);
+            company.MandateDate = Convert.ToDateTime(data["MandateDate"]);
+
+            company.Hide = Convert.ToBoolean(data["Hide"]);
+
+            return company;
         }
 
         public void Create(CompanyDto company)
@@ -51,7 +60,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Query(sql, "INSERT");
+            var reader = conn.Insert(sql);
         }
 
         public void Update(CompanyDto company)
@@ -72,7 +81,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Query(sql, "UPDATE");
+            var reader = conn.Update(sql);
         }
 
         public void Delete(CompanyDto company)
@@ -83,7 +92,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Query(sql, "DELETE");
+            var reader = conn.Delete(sql);
         }
 
     }

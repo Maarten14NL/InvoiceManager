@@ -9,31 +9,42 @@ namespace InvoiceManager_Database
 {
     public class ContractsCrud
     {            
-        private Connection con = new Connection();
-        public List<ContractDto> FindAll()
+        private readonly Connection _con = new Connection();
+        public List<ContractDto> Read(int? id = null)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT * ");
             sb.Append("FROM [Contracts] ct ");
+            if (id != null)
+            {
+                sb.Append("Where Id = " + id);
+            }
+
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Query(sql, "SELECT");
+            var reader = conn.Select(sql);
 
             List<ContractDto> ContractList = new List<ContractDto>();
             while (reader.Read())
             {
-                ContractDto contract = new ContractDto();
-                contract.Id             = Convert.ToInt32(reader["Id"]);
-                contract.Name           = Convert.ToString(reader["Name"]);
-                contract.Description    = Convert.ToString(reader["Description"]);
-                contract.Price          = Convert.ToDouble(reader["Price"]); 
-                contract.Hide           = Convert.ToBoolean(reader["Hide"]);
-
-                ContractList.Add(contract);
+                ContractList.Add(this.Contract(reader));
             }
 
             return ContractList;
+        }
+        public ContractDto Contract(dynamic data)
+        {
+            ContractDto contract = new ContractDto
+            {
+                Id = Convert.ToInt32(data["Id"]),
+                Name = Convert.ToString(data["Name"]),
+                Description = Convert.ToString(data["Description"]),
+                Price = Convert.ToDouble(data["Price"]),
+                Hide = Convert.ToBoolean(data["Hide"])
+            };
+
+            return contract;
         }
 
         public void Create(ContractDto contract)
@@ -45,7 +56,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Query(sql, "INSERT");
+            var reader = conn.Insert(sql);
         }
 
         public void Update(ContractDto contract)
@@ -60,7 +71,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Query(sql, "UPDATE");
+            var reader = conn.Update(sql);
         }
 
         public void Delete(ContractDto contract)
@@ -71,7 +82,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Query(sql, "DELETE");
+            var reader = conn.Delete(sql);
         }
        
 

@@ -12,12 +12,10 @@ namespace InvoiceManager.Controllers
     [AllowCrossSiteJsonAttribute]
     public class CompanyController : Controller
     {
-
-
-        public ActionResult Index()
+        public ActionResult Read(int? id)
         {
             Companies cont = new Companies();
-            var Companies = cont.Index();
+            var Companies = cont.Read(id);
 
             return Json(new { companies = Companies }, JsonRequestBehavior.AllowGet);
         }

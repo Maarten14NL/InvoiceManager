@@ -9,11 +9,11 @@ namespace InvoiceManager_Logic
 {
     public class Contracts
     {
-        public List<ContractEntity> Index()
+        public List<ContractEntity> Read(int? id = null)
         {
             //new List<ContractModel>();
             ContractsCrud contracts = new ContractsCrud();
-            List<ContractDto> contractsList =  contracts.FindAll();
+            List<ContractDto> contractsList =  contracts.Read(id);
             List <ContractEntity> test = new List<ContractEntity>();
 
             foreach (var contract in contractsList)
@@ -31,49 +31,63 @@ namespace InvoiceManager_Logic
 
             return test;
         }
-        public void Create(ContractEntity contract)
+        public bool Create(ContractEntity contract)
         {
-            ContractDto test = new ContractDto();
+            if (contract.Valid())
+            {
+                ContractDto test = new ContractDto
+                {
+                    Id = contract.Id,
+                    Name = contract.Name,
+                    Description = contract.Description,
+                    Price = contract.Price,
+                    Hide = contract.Hide
+                };
 
-            test.Id             = contract.Id;
-            test.Name           = contract.Name;
-            test.Description    = contract.Description;
-            test.Price          = contract.Price;
-            test.Hide           = contract.Hide;
-            
+                ContractsCrud contracts = new ContractsCrud();
+                contracts.Create(test);
 
-            ContractsCrud contracts = new ContractsCrud();
-            contracts.Create(test);
+                return true;
+            }
+            return false;
         }
 
-        public void Update(ContractEntity contract)
+        public bool Update(ContractEntity contract)
         {
-            ContractDto test = new ContractDto();
+            if (contract.Valid())
+            {
+                ContractDto test = new ContractDto
+                {
+                    Id = contract.Id,
+                    Name = contract.Name,
+                    Description = contract.Description,
+                    Price = contract.Price,
+                    Hide = contract.Hide
+                };
 
-            test.Id = contract.Id;
-            test.Name = contract.Name;
-            test.Description = contract.Description;
-            test.Price = contract.Price;
-            test.Hide = contract.Hide;
+                ContractsCrud contracts = new ContractsCrud();
+                contracts.Update(test);
 
-            ContractsCrud contracts = new ContractsCrud();
-            contracts.Update(test);
-
+                return true;
+            }
+            return false;
         }
 
-        public void Delete(ContractEntity contract)
+        public bool Delete(ContractEntity contract)
         {
-            ContractDto test = new ContractDto();
-
-            test.Id = contract.Id;
-            test.Name = contract.Name;
-            test.Description = contract.Description;
-            test.Price = contract.Price;
-            test.Hide = contract.Hide;
+            ContractDto test = new ContractDto
+            {
+                Id = contract.Id,
+                Name = contract.Name,
+                Description = contract.Description,
+                Price = contract.Price,
+                Hide = contract.Hide
+            };
 
             ContractsCrud contracts = new ContractsCrud();
             contracts.Delete(test);
 
+            return true;
         }
 
     }

@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Companies.cs" />
+    <Compile Include="CompanyContracts.cs" />
+    <Compile Include="CompanyContractsEntity.cs" />
     <Compile Include="CompanyEntity.cs" />
     <Compile Include="ContractEntity.cs" />
     <Compile Include="Contracts.cs" />

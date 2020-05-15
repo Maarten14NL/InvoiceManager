@@ -22,5 +22,18 @@ namespace InvoiceManager_Logic
             this.Price = Price;
             this.Hide = Hide;
         }
+
+        public bool Valid()
+        {
+            if (
+                Name == null ||
+                Description == null ||
+                Price == null
+                )
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

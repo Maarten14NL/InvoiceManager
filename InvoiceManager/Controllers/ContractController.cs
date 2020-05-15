@@ -17,10 +17,10 @@ namespace InvoiceManager.Controllers
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
         public ContractController() {}
 
-        public ActionResult Index()
+        public ActionResult Read(int? id)
         {
             Contracts cont = new Contracts();
-            var Contracts = cont.Index();
+            var Contracts = cont.Read(id);
            // var Contracts = _context.Contracts.Where(x => x.Hide == false).ToList();
 
             return Json(new { contracts = Contracts }, JsonRequestBehavior.AllowGet);
