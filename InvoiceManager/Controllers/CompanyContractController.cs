@@ -14,10 +14,10 @@ namespace InvoiceManager.Controllers
         // GET: CompanyContract
         public ActionResult Index()
         {
-            CompanyContracts cc = new CompanyContracts();
-            var Companies = cc.Index();
+            //CompanyContracts cc = new CompanyContracts();
+            //var Companies = cc.Index();
 
-            return Json(new { companies = Companies }, JsonRequestBehavior.AllowGet);
+            return Json(new { companies = "test" }, JsonRequestBehavior.AllowGet);
         }
 
     }

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InvoiceMananger_DatabaseInterface;
 
 namespace InvoiceManager_Database
 {
-    public class CompanyContractsCrud
+    public class CompanyContractsCrud: ICompanyContracts
     {
         private readonly Connection con = new Connection();
 
-        public List<CompanyContractsDto> FindAll()
+        public List<CompanyContractsDto> Read()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT * ");

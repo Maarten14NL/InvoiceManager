@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InvoiceMananger_DatabaseInterface;
 
 namespace InvoiceManager_Database
 {
-    public class CompanyCrud
+    public class CompanyCrud: ICompany
     {
 
         private Connection con = new Connection();
@@ -51,7 +52,7 @@ namespace InvoiceManager_Database
             return company;
         }
 
-        public void Create(CompanyDto company)
+        public bool Create(CompanyDto company)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("INSERT INTO [Companies]");
@@ -61,9 +62,11 @@ namespace InvoiceManager_Database
 
             Connection conn = new Connection();
             var reader = conn.Insert(sql);
+
+            return true;
         }
 
-        public void Update(CompanyDto company)
+        public bool Update(CompanyDto company)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE [Companies] SET ");
@@ -82,9 +85,11 @@ namespace InvoiceManager_Database
 
             Connection conn = new Connection();
             var reader = conn.Update(sql);
+
+            return true;
         }
 
-        public void Delete(CompanyDto company)
+        public bool Delete(CompanyDto company)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("DELETE FROM [Companies]");
@@ -93,6 +98,8 @@ namespace InvoiceManager_Database
 
             Connection conn = new Connection();
             var reader = conn.Delete(sql);
+
+            return true;
         }
 
     }

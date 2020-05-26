@@ -33,6 +33,7 @@ namespace InvoiceManager_Logic.Tests
             if (!Create(ce))
             {
                 Assert.Fail();
+                //Assert.IsTrue(!Create(ce));
             }
         }
 

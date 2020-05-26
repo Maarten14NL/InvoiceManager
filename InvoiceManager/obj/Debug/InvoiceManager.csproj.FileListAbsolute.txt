@@ -150,3 +150,8 @@ C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Logic.pdb
 C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Database.exe
 C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Database.pdb
 C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Database.exe.config
+C:\fontys\git\InvoiceManager\InvoiceManager\obj\Debug\InvoiceManager.csproj.CoreCompileInputs.cache
+C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceMananger_DatabaseInterface.dll
+C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Factory.dll
+C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceMananger_DatabaseInterface.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager\bin\InvoiceManager_Factory.pdb

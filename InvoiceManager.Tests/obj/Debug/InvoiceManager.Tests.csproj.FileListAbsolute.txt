@@ -59,3 +59,8 @@ C:\fontys\git\InvoiceManager\InvoiceManager.Tests\bin\Debug\InvoiceManager_Datab
 C:\fontys\git\InvoiceManager\InvoiceManager.Tests\bin\Debug\InvoiceManager_Logic.pdb
 C:\fontys\git\InvoiceManager\InvoiceManager.Tests\bin\Debug\InvoiceManager_Database.pdb
 C:\fontys\git\InvoiceManager\InvoiceManager.Tests\bin\Debug\InvoiceManager_Database.exe.config
+C:\fontys\git\InvoiceManager\InvoiceManager.Tests\obj\Debug\InvoiceManager.Tests.csproj.CoreCompileInputs.cache
+C:\fontys\git\InvoiceManager\InvoiceManager.Tests\bin\Debug\InvoiceMananger_DatabaseInterface.dll
+C:\fontys\git\InvoiceManager\InvoiceManager.Tests\bin\Debug\InvoiceManager_Factory.dll
+C:\fontys\git\InvoiceManager\InvoiceManager.Tests\bin\Debug\InvoiceMananger_DatabaseInterface.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager.Tests\bin\Debug\InvoiceManager_Factory.pdb

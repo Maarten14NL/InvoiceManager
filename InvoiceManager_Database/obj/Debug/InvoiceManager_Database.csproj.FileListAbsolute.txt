@@ -7,3 +7,6 @@ C:\fontys\git\InvoiceManager\InvoiceManager_Database\bin\Debug\System.Data.SqlCl
 C:\fontys\git\InvoiceManager\InvoiceManager_Database\obj\Debug\InvoiceManager_Database.csproj.CopyComplete
 C:\fontys\git\InvoiceManager\InvoiceManager_Database\obj\Debug\InvoiceManager_Database.exe
 C:\fontys\git\InvoiceManager\InvoiceManager_Database\obj\Debug\InvoiceManager_Database.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Database\obj\Debug\InvoiceManager_Database.csproj.CoreCompileInputs.cache
+C:\fontys\git\InvoiceManager\InvoiceManager_Database\bin\Debug\InvoiceMananger_DatabaseInterface.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Database\bin\Debug\InvoiceMananger_DatabaseInterface.pdb

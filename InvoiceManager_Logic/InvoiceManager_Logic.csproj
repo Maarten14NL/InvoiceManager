@@ -59,10 +59,10 @@
   <ItemGroup>
     <Compile Include="Companies.cs" />
     <Compile Include="CompanyContracts.cs" />
-    <Compile Include="CompanyContractsEntity.cs" />
-    <Compile Include="CompanyEntity.cs" />
-    <Compile Include="ContractEntity.cs" />
+    <Compile Include="Entities\CompanyContractsEntity.cs" />
+    <Compile Include="Entities\CompanyEntity.cs" />
     <Compile Include="Contracts.cs" />
+    <Compile Include="Entities\ContractEntity.cs" />
     <Compile Include="FileService.cs" />
     <Compile Include="GenerateInvoice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,9 +74,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\InvoiceManager_Database\InvoiceManager_Database.csproj">
-      <Project>{a7d60c38-8bb4-42e6-837c-5e0f20271ae0}</Project>
-      <Name>InvoiceManager_Database</Name>
+    <ProjectReference Include="..\InvoiceManager_Factory\InvoiceManager_Factory.csproj">
+      <Project>{7f4d7610-a121-4718-8385-cf1feaca643d}</Project>
+      <Name>InvoiceManager_Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InvoiceMananger_DatabaseInterface\InvoiceMananger_DatabaseInterface.csproj">
+      <Project>{d3035357-81e9-40f9-bc39-4ed870b88bf6}</Project>
+      <Name>InvoiceMananger_DatabaseInterface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,6 +8,7 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Cors;
 using InvoiceManager_Logic;
+using InvoiceManager_Logic.Entities;
 
 namespace InvoiceManager.Controllers
 {

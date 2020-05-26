@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InvoiceManager_Database;
+using InvoiceManager_Factory;
+using InvoiceManager_Logic.Entities;
+using InvoiceMananger_DatabaseInterface;
 
 namespace InvoiceManager_Logic
 {
@@ -11,11 +13,8 @@ namespace InvoiceManager_Logic
     {
         public List<ContractEntity> Read(int? id = null)
         {
-            //new List<ContractModel>();
-            ContractsCrud contracts = new ContractsCrud();
-            List<ContractDto> contractsList =  contracts.Read(id);
-            List <ContractEntity> test = new List<ContractEntity>();
-
+            List<ContractDto> contractsList = ContractFactory.Read(id);
+            List<ContractEntity> test = new List<ContractEntity>();
             foreach (var contract in contractsList)
             {
                 ContractEntity c = new ContractEntity(
@@ -25,29 +24,16 @@ namespace InvoiceManager_Logic
                     contract.Price,
                     contract.Hide
                 );
-                
-                test.Add(c);
-            } 
 
+                test.Add(c);
+            }
             return test;
         }
         public bool Create(ContractEntity contract)
         {
             if (contract.Valid())
             {
-                ContractDto test = new ContractDto
-                {
-                    Id = contract.Id,
-                    Name = contract.Name,
-                    Description = contract.Description,
-                    Price = contract.Price,
-                    Hide = contract.Hide
-                };
-
-                ContractsCrud contracts = new ContractsCrud();
-                contracts.Create(test);
-
-                return true;
+                return ContractFactory.Create(SetContractDto(contract));
             }
             return false;
         }
@@ -56,26 +42,23 @@ namespace InvoiceManager_Logic
         {
             if (contract.Valid())
             {
-                ContractDto test = new ContractDto
-                {
-                    Id = contract.Id,
-                    Name = contract.Name,
-                    Description = contract.Description,
-                    Price = contract.Price,
-                    Hide = contract.Hide
-                };
-
-                ContractsCrud contracts = new ContractsCrud();
-                contracts.Update(test);
-
-                return true;
+                return ContractFactory.Update(SetContractDto(contract));
             }
             return false;
         }
 
         public bool Delete(ContractEntity contract)
         {
-            ContractDto test = new ContractDto
+            if (contract.Valid())
+            {
+                return ContractFactory.Delete(SetContractDto(contract));
+            }
+            return false;
+        }
+
+        private ContractDto SetContractDto(ContractEntity contract)
+        {
+            ContractDto contractDto = new ContractDto
             {
                 Id = contract.Id,
                 Name = contract.Name,
@@ -84,10 +67,7 @@ namespace InvoiceManager_Logic
                 Hide = contract.Hide
             };
 
-            ContractsCrud contracts = new ContractsCrud();
-            contracts.Delete(test);
-
-            return true;
+            return contractDto;
         }
 
     }

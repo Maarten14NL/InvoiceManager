@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InvoiceManager_Database;
+using InvoiceManager_Factory;
+using InvoiceManager_Logic.Entities;
+using InvoiceMananger_DatabaseInterface;
 
 namespace InvoiceManager_Logic
 {
@@ -12,8 +14,9 @@ namespace InvoiceManager_Logic
         public List<CompanyEntity> Read(int? id = null)
         {
             //new List<ContractModel>();
-            CompanyCrud companies = new CompanyCrud();
-            List<CompanyDto> companiesList = companies.Read(id);
+            //CompanyCrud companies = new CompanyCrud();
+            List<CompanyDto> companiesList = CompanyFactory.Read();
+
             List<CompanyEntity> test = new List<CompanyEntity>();
 
             foreach (var company in companiesList)
@@ -41,10 +44,7 @@ namespace InvoiceManager_Logic
         {
             if (company.Valid())
             {
-                CompanyCrud contracts = new CompanyCrud();
-                contracts.Create(SetContractDto(company));
-
-                return true;
+                return CompanyFactory.Create(SetContractDto(company));
             }
             return false;
         }
@@ -53,25 +53,23 @@ namespace InvoiceManager_Logic
         {
             if (company.Valid())
             {
-                CompanyCrud contracts = new CompanyCrud();
-                contracts.Update(SetContractDto(company));
-
-                return true;
+                return CompanyFactory.Update(SetContractDto(company));
             }
             return false;
         }
 
         public bool Delete(CompanyEntity company)
         {
-            CompanyCrud contracts = new CompanyCrud();
-            contracts.Delete(SetContractDto(company));
-
-            return true;
+            if (company.Valid())
+            {
+                return CompanyFactory.Delete(SetContractDto(company));
+            }
+            return false;
         }
 
         private CompanyDto SetContractDto(CompanyEntity company)
         {
-            CompanyDto test = new CompanyDto
+            CompanyDto companyDto = new CompanyDto
             {
                 Id = company.Id,
                 Name = company.Name,
@@ -85,7 +83,7 @@ namespace InvoiceManager_Logic
                 Hide = company.Hide
             };
 
-            return test;
+            return companyDto;
         }
     }
 }

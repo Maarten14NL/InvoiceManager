@@ -4,10 +4,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InvoiceMananger_DatabaseInterface;
 
 namespace InvoiceManager_Database
 {
-    public class ContractsCrud
+    public class ContractsCrud: IContract
     {            
         private readonly Connection _con = new Connection();
         public List<ContractDto> Read(int? id = null)
@@ -47,7 +48,7 @@ namespace InvoiceManager_Database
             return contract;
         }
 
-        public void Create(ContractDto contract)
+        public bool Create(ContractDto contract)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("INSERT INTO [Contracts]");
@@ -57,9 +58,11 @@ namespace InvoiceManager_Database
 
             Connection conn = new Connection();
             var reader = conn.Insert(sql);
+
+            return true;
         }
 
-        public void Update(ContractDto contract)
+        public bool Update(ContractDto contract)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE [Contracts] SET ");
@@ -72,9 +75,11 @@ namespace InvoiceManager_Database
 
             Connection conn = new Connection();
             var reader = conn.Update(sql);
+
+            return true;
         }
 
-        public void Delete(ContractDto contract)
+        public bool Delete(ContractDto contract)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("DELETE FROM [Contracts]");
@@ -83,6 +88,8 @@ namespace InvoiceManager_Database
 
             Connection conn = new Connection();
             var reader = conn.Delete(sql);
+
+            return true;
         }
        
 

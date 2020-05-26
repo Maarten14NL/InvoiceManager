@@ -91,9 +91,7 @@
   <ItemGroup>
     <Compile Include="CompaniesTests.cs" />
     <Compile Include="ContractsTests.cs" />
-    <Compile Include="Controllers\ContractControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

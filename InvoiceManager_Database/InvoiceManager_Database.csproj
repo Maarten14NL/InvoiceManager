@@ -48,17 +48,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompanyContractsCrud.cs" />
-    <Compile Include="CompanyContractsDto.cs" />
     <Compile Include="CompanyCrud.cs" />
-    <Compile Include="CompanyDto.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="ContractDto.cs" />
     <Compile Include="ContractsCrud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InvoiceMananger_DatabaseInterface\InvoiceMananger_DatabaseInterface.csproj">
+      <Project>{d3035357-81e9-40f9-bc39-4ed870b88bf6}</Project>
+      <Name>InvoiceMananger_DatabaseInterface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
