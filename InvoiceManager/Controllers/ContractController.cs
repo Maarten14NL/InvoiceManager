@@ -15,14 +15,12 @@ namespace InvoiceManager.Controllers
     [AllowCrossSiteJsonAttribute]
     public class ContractController : Controller
     {
-        private readonly ApplicationDbContext _context = new ApplicationDbContext();
         public ContractController() {}
 
         public ActionResult Read(int? id)
         {
             Contracts cont = new Contracts();
             var Contracts = cont.Read(id);
-           // var Contracts = _context.Contracts.Where(x => x.Hide == false).ToList();
 
             return Json(new { contracts = Contracts }, JsonRequestBehavior.AllowGet);
         }
@@ -38,17 +36,6 @@ namespace InvoiceManager.Controllers
 
         public ActionResult Edit(String data)
         {
-            //Contract givenContract = JsonConvert.DeserializeObject<Contract>(data);
-            //int id = 1;
-            //Contract editContract = _context.Contracts.Where(x => x.Id == givenContract.Id).FirstOrDefault();
-
-            //editContract.Name = givenContract.Name;
-            //editContract.Description = givenContract.Description;
-            //editContract.Price = givenContract.Price;
-
-            //_context.SaveChanges();
-
-            //return Json(new { contracts = id, data = givenContract }, JsonRequestBehavior.AllowGet);
 
             ContractEntity givenContract = JsonConvert.DeserializeObject<ContractEntity>(data);
             Contracts cont = new Contracts();
@@ -59,22 +46,6 @@ namespace InvoiceManager.Controllers
 
         public ActionResult Delete(String data)
         {
-            //Contract givenContract = JsonConvert.DeserializeObject<Contract>(data);
-            //int id = 1;
-            //Contract deleteContract = _context.Contracts.Where(x => x.Id == givenContract.Id).FirstOrDefault();
-
-            ////if (id != 1)
-            ////{
-            ////_context.Contracts.Remove(deleteContract);
-            ////}
-            ////else
-            ////{
-            //deleteContract.Hide = true;
-            ////}
-
-            //_context.SaveChanges();
-
-
             ContractEntity deleteContract = JsonConvert.DeserializeObject<ContractEntity>(data);
             Contracts cont = new Contracts();
             cont.Delete(deleteContract);
