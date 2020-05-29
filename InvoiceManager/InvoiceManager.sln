@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager_Logic", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager_Database", "..\InvoiceManager_Database\InvoiceManager_Database.csproj", "{A7D60C38-8BB4-42E6-837C-5E0F20271AE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceMananger_DatabaseInterface", "..\InvoiceMananger_DatabaseInterface\InvoiceMananger_DatabaseInterface.csproj", "{D3035357-81E9-40F9-BC39-4ED870B88BF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager_DatabaseInterface", "..\InvoiceMananger_DatabaseInterface\InvoiceManager_DatabaseInterface.csproj", "{D3035357-81E9-40F9-BC39-4ED870B88BF6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceManager_Factory", "..\InvoiceManager_Factory\InvoiceManager_Factory.csproj", "{7F4D7610-A121-4718-8385-CF1FEACA643D}"
 EndProject

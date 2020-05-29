@@ -10,15 +10,16 @@ namespace InvoiceManager_Database
     public class CompanyCrud: ICompany
     {
 
-        private Connection con = new Connection();
+        private readonly Connection con = new Connection();
         public List<CompanyDto> Read(int? id = null)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT * ");
-            sb.Append("FROM [Companies] cp ");
-            if(id != null)
+            sb.Append("SELECT ");
+            sb.Append("cm.Id as CompanyId, cm.Name AS CompanyName, cm.CustomerNumber AS CompanCustomerNumber, cm.Iban AS CompanyIban, cm.IbanAscription AS CompanyIbanAscription, cm.PhoneNumber AS CompanyPhoneNumber, cm.Website AS CompanyWebsite, cm.Email AS CompanyEmail, cm.MandateDate AS CompanyMandateDate, cm.Hide AS CompanyHide ");
+            sb.Append("FROM [Companies] cm ");
+            if (id != null)
             {
-                sb.Append("Where Id = " + id);
+                sb.Append("Where cm.Id = " + id);
             }
             String sql = sb.ToString();
 
@@ -36,18 +37,20 @@ namespace InvoiceManager_Database
 
         public CompanyDto Company(dynamic data)
         {
-            CompanyDto company = new CompanyDto();
-            company.Id = Convert.ToInt32(data["Id"]);
-            company.Name = Convert.ToString(data["Name"]);
-            company.CustomerNumber = Convert.ToString(data["CustomerNumber"]);
-            company.Iban = Convert.ToString(data["Iban"]);
-            company.IbanAscription = Convert.ToString(data["IbanAscription"]);
-            company.PhoneNumber = Convert.ToString(data["PhoneNumber"]);
-            company.Website = Convert.ToString(data["Website"]);
-            company.Email = Convert.ToString(data["Email"]);
-            company.MandateDate = Convert.ToDateTime(data["MandateDate"]);
+            CompanyDto company = new CompanyDto
+            {
+                Id = Convert.ToInt32(data["CompanyId"]),
+                Name = Convert.ToString(data["CompanyName"]),
+                CustomerNumber = Convert.ToString(data["CompanCustomerNumber"]),
+                Iban = Convert.ToString(data["CompanyIban"]),
+                IbanAscription = Convert.ToString(data["CompanyIbanAscription"]),
+                PhoneNumber = Convert.ToString(data["CompanyPhoneNumber"]),
+                Website = Convert.ToString(data["CompanyWebsite"]),
+                Email = Convert.ToString(data["CompanyEmail"]),
+                MandateDate = Convert.ToDateTime(data["CompanyMandateDate"]),
 
-            company.Hide = Convert.ToBoolean(data["Hide"]);
+                Hide = Convert.ToBoolean(data["CompanyHide"])
+            };
 
             return company;
         }
@@ -61,7 +64,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Insert(sql);
+            conn.Insert(sql);
 
             return true;
         }
@@ -84,7 +87,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Update(sql);
+            conn.Update(sql);
 
             return true;
         }
@@ -97,7 +100,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Delete(sql);
+            conn.Delete(sql);
 
             return true;
         }

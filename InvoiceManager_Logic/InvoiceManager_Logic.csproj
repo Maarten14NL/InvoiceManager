@@ -78,9 +78,9 @@
       <Project>{7f4d7610-a121-4718-8385-cf1feaca643d}</Project>
       <Name>InvoiceManager_Factory</Name>
     </ProjectReference>
-    <ProjectReference Include="..\InvoiceMananger_DatabaseInterface\InvoiceMananger_DatabaseInterface.csproj">
+    <ProjectReference Include="..\InvoiceMananger_DatabaseInterface\InvoiceManager_DatabaseInterface.csproj">
       <Project>{d3035357-81e9-40f9-bc39-4ed870b88bf6}</Project>
-      <Name>InvoiceMananger_DatabaseInterface</Name>
+      <Name>InvoiceManager_DatabaseInterface</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

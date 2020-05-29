@@ -13,27 +13,13 @@ namespace InvoiceManager_Logic
     {
         public List<CompanyEntity> Read(int? id = null)
         {
-            //new List<ContractModel>();
-            //CompanyCrud companies = new CompanyCrud();
-            List<CompanyDto> companiesList = CompanyFactory.Read();
+            List<CompanyDto> companiesList = CompanyFactory.Read(id);
 
             List<CompanyEntity> test = new List<CompanyEntity>();
 
             foreach (var company in companiesList)
             {
-                CompanyEntity c = new CompanyEntity(
-                    company.Id,
-                    company.Name,
-                    company.CustomerNumber,
-                    company.Iban,
-                    company.IbanAscription,
-                    company.PhoneNumber,
-                    company.Website,
-                    company.Email,
-                    Convert.ToString(company.MandateDate),
-                    company.Hide
-                );
-
+                CompanyEntity c = new CompanyEntity(company);
                 test.Add(c);
             }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InvoiceMananger_DatabaseInterface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,20 @@ namespace InvoiceManager_Logic
             this.Email = Email;
             this.MandateDate = MandateDate;
             this.Hide = Hide;
+        }
+
+        public CompanyEntity(CompanyDto company)
+        {
+            this.Id = company.Id;
+            this.Name = company.Name;
+            this.CustomerNumber = company.CustomerNumber;
+            this.Iban = company.Iban;
+            this.IbanAscription = company.IbanAscription;
+            this.PhoneNumber = company.PhoneNumber;
+            this.Website = company.Website;
+            this.Email = company.Email;
+            this.MandateDate = company.MandateDate.ToString();
+            this.Hide = company.Hide;
         }
 
         public bool Valid()

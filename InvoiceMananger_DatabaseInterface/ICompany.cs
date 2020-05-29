@@ -28,5 +28,6 @@ namespace InvoiceMananger_DatabaseInterface
         public string Email;
         public Nullable<DateTime> MandateDate;
         public bool Hide;
+        public List<CompanyContractsDto?> CompanyContracts;
     }
 }

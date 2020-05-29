@@ -14,7 +14,8 @@ namespace InvoiceManager_Database
         public List<ContractDto> Read(int? id = null)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT * ");
+            sb.Append("SELECT ");
+            sb.Append("ct.Id as ContractId, ct.Name AS ContractName, ct.Description AS ContractDescription, ct.Price AS ContractPrice, ct.Hide AS ContractHide ");
             sb.Append("FROM [Contracts] ct ");
             if (id != null)
             {
@@ -38,11 +39,11 @@ namespace InvoiceManager_Database
         {
             ContractDto contract = new ContractDto
             {
-                Id = Convert.ToInt32(data["Id"]),
-                Name = Convert.ToString(data["Name"]),
-                Description = Convert.ToString(data["Description"]),
-                Price = Convert.ToDouble(data["Price"]),
-                Hide = Convert.ToBoolean(data["Hide"])
+                Id = Convert.ToInt32(data["ContractId"]),
+                Name = Convert.ToString(data["ContractName"]),
+                Description = Convert.ToString(data["ContractDescription"]),
+                Price = Convert.ToDouble(data["ContractPrice"]),
+                Hide = Convert.ToBoolean(data["ContractHide"])
             };
 
             return contract;

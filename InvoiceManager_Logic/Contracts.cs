@@ -17,13 +17,7 @@ namespace InvoiceManager_Logic
             List<ContractEntity> test = new List<ContractEntity>();
             foreach (var contract in contractsList)
             {
-                ContractEntity c = new ContractEntity(
-                    contract.Id,
-                    contract.Name,
-                    contract.Description,
-                    contract.Price,
-                    contract.Hide
-                );
+                ContractEntity c = new ContractEntity(contract);
 
                 test.Add(c);
             }

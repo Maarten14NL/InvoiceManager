@@ -15,5 +15,11 @@ namespace InvoiceManager_Factory
             ICompanyContracts dal = new CompanyContractsCrud();
             return dal.Read();
         }
+
+        public static List<CompanyContractsDto> GetByCompany(int companyId)
+        {
+            ICompanyContracts dal = new CompanyContractsCrud();
+            return dal.GetByCompany(companyId);
+        }
     }
 }

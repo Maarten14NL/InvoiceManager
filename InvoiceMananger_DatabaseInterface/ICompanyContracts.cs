@@ -9,6 +9,7 @@ namespace InvoiceMananger_DatabaseInterface
     public interface ICompanyContracts
     {
         List<CompanyContractsDto> Read();
+        List<CompanyContractsDto> GetByCompany(int companyId);
     }
 
     public struct CompanyContractsDto
