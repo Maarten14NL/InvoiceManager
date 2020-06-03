@@ -11,9 +11,11 @@ namespace InvoiceManager_Logic
 {
     public class Companies
     {
+        private readonly ICompany _CompanyDal = CompanyFactory.GetCompany();
         public List<CompanyEntity> Read(int? id = null)
         {
-            List<CompanyDto> companiesList = CompanyFactory.Read(id);
+            
+            List<CompanyDto> companiesList = _CompanyDal.Read(id);
 
             List<CompanyEntity> test = new List<CompanyEntity>();
 
@@ -30,7 +32,7 @@ namespace InvoiceManager_Logic
         {
             if (company.Valid())
             {
-                return CompanyFactory.Create(SetContractDto(company));
+                return _CompanyDal.Create(SetContractDto(company));
             }
             return false;
         }
@@ -39,7 +41,7 @@ namespace InvoiceManager_Logic
         {
             if (company.Valid())
             {
-                return CompanyFactory.Update(SetContractDto(company));
+                return _CompanyDal.Update(SetContractDto(company));
             }
             return false;
         }
@@ -48,7 +50,7 @@ namespace InvoiceManager_Logic
         {
             if (company.Valid())
             {
-                return CompanyFactory.Delete(SetContractDto(company));
+                return _CompanyDal.Delete(SetContractDto(company));
             }
             return false;
         }

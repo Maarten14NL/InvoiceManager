@@ -65,6 +65,10 @@
     <Compile Include="Entities\ContractEntity.cs" />
     <Compile Include="FileService.cs" />
     <Compile Include="GenerateInvoice.cs" />
+    <Compile Include="Invoices.cs" />
+    <Compile Include="PlaceHolder.cs" />
+    <Compile Include="ReplaceWords.cs" />
+    <Compile Include="TableFields.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

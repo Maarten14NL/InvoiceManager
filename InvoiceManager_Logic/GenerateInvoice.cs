@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Reflection;
 using word = Microsoft.Office.Interop.Word;
 using System.Web;
+using InvoiceManager_Logic.Invoice;
+using System.Web.UI.WebControls;
 
 namespace InvoiceManager_Logic
 {
@@ -58,14 +60,15 @@ namespace InvoiceManager_Logic
               );
         }
 
-        private void FillTables(word.Document document)
+        private void FillTables(word.Document document, List<List<PlaceHolder>> tableFields)
         {
             object test = "invoiceTable";
 
             word.Range wrdRng = document.Bookmarks.get_Item(ref test).Range;
             foreach (word.Table tables in wrdRng.Tables)
             {
-                for (int i = 0; i < 5; i++)
+                int rowCounter = 0;
+                foreach (List<PlaceHolder> fields in tableFields)
                 {
                     word.Table tab = tables;
                     word.Range range = tab.Range;
@@ -88,20 +91,21 @@ namespace InvoiceManager_Logic
                     foreach (word.Cell cell in tab.Rows[selectedRow].Cells)
                     {
                         string field = cell.Range.Text;
-
-                        field = field.Replace("<Invoice.Name>", "WTF");
-                        field = field.Replace("<Invoice.Amount>", Convert.ToString(i));
-                        field = field.Replace("<Invoice.Price>", Convert.ToString((i + 10) * 10));
+                        foreach (PlaceHolder placeHolder in fields)
+                        {
+                            field = field.Replace(placeHolder.Placeholder, placeHolder.NewValue);
+                        }
 
                         cell.Range.Text = field;
                     }
 
 
                     // Paste values to target row.
-                    if (i < 5 - 1)
+                    if (rowCounter < tableFields.Count - 1)
                     {
                         range.Paste();
                     }
+                    rowCounter++;
                 }
             }
         }
@@ -145,7 +149,7 @@ namespace InvoiceManager_Logic
             }
         }
 
-        public void Generate()
+        public void Generate(List<PlaceHolder> replaceWords, List<List<PlaceHolder>> tableFields)
         {
             string invoiceName = "test";
             string templatePath = GetDataFilePath;
@@ -182,20 +186,13 @@ namespace InvoiceManager_Logic
                 invoice.Activate();
 
                 //find and replace-
-                this.ReplacePlaceHolders(wordApp, "<Today>", "18-02-2020");
-                this.ReplacePlaceHolders(wordApp, "<Organisation.Name>", "test");
-                this.ReplacePlaceHolders(wordApp, "<Organisation.Address>", "Radioweg 17");
-                this.ReplacePlaceHolders(wordApp, "<Organisation.Postal>", "5844 AA, Stevensbeek");
-                this.ReplacePlaceHolders(wordApp, "<Organisation.Phone>", "0620705928");
-                this.ReplacePlaceHolders(wordApp, "<Organisation.Email>", "Radioweg 17");
-                this.ReplacePlaceHolders(wordApp, "<Company.Name>", "Test bedrijf");
-                this.ReplacePlaceHolders(wordApp, "<Organisation.Address>", "Radioweg 17");
-                this.ReplacePlaceHolders(wordApp, "<Organisation.Address>", "Radioweg 17");
-                this.ReplacePlaceHolders(wordApp, "<Organisation.Address>", "Radioweg 17");
-                this.ReplacePlaceHolders(wordApp, "<Organisation.Address>", "Radioweg 17");
+                foreach (PlaceHolder replaceWord in replaceWords)
+                {
+                    ReplacePlaceHolders(wordApp, replaceWord.Placeholder, replaceWord.NewValue);
+                }
 
                 //populate table
-                this.FillTables(invoice);
+                this.FillTables(invoice, tableFields);
 
                 //save invoice
                 object saveAs = templatePath + "\\" + invoiceName + ".pdf";

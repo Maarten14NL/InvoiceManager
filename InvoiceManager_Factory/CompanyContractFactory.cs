@@ -10,16 +10,9 @@ namespace InvoiceManager_Factory
 {
     public class CompanyContractFactory
     {
-        public static List<CompanyContractsDto> Read()
+        public static ICompanyContracts GetCompanyContract()
         {
-            ICompanyContracts dal = new CompanyContractsCrud();
-            return dal.Read();
-        }
-
-        public static List<CompanyContractsDto> GetByCompany(int companyId)
-        {
-            ICompanyContracts dal = new CompanyContractsCrud();
-            return dal.GetByCompany(companyId);
+            return new CompanyContractsCrud();
         }
     }
 }

@@ -11,9 +11,10 @@ namespace InvoiceManager_Logic
 {
     public class Contracts
     {
+        private readonly IContract _ContractDal = ContractFactory.GetContract();
         public List<ContractEntity> Read(int? id = null)
         {
-            List<ContractDto> contractsList = ContractFactory.Read(id);
+            List<ContractDto> contractsList = _ContractDal.Read(id);
             List<ContractEntity> test = new List<ContractEntity>();
             foreach (var contract in contractsList)
             {
@@ -27,7 +28,7 @@ namespace InvoiceManager_Logic
         {
             if (contract.Valid())
             {
-                return ContractFactory.Create(SetContractDto(contract));
+                return _ContractDal.Create(SetContractDto(contract));
             }
             return false;
         }
@@ -36,7 +37,7 @@ namespace InvoiceManager_Logic
         {
             if (contract.Valid())
             {
-                return ContractFactory.Update(SetContractDto(contract));
+                return _ContractDal.Update(SetContractDto(contract));
             }
             return false;
         }
@@ -45,7 +46,7 @@ namespace InvoiceManager_Logic
         {
             if (contract.Valid())
             {
-                return ContractFactory.Delete(SetContractDto(contract));
+                return _ContractDal.Delete(SetContractDto(contract));
             }
             return false;
         }

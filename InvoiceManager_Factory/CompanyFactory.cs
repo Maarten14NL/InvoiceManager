@@ -10,28 +10,9 @@ namespace InvoiceManager_Factory
 {
     public static class CompanyFactory
     {
-        public static List<CompanyDto> Read(int? id = null)
+        public static ICompany GetCompany()
         {
-            ICompany dal = new CompanyCrud();
-            return dal.Read(id);
-        }
-
-        public static bool Create(CompanyDto company)
-        {
-            ICompany dal = new CompanyCrud();
-            return dal.Create(company);
-        }
-
-        public static bool Update(CompanyDto company)
-        {
-            ICompany dal = new CompanyCrud();
-            return dal.Create(company);
-        }
-
-        public static bool Delete(CompanyDto company)
-        {
-            ICompany dal = new CompanyCrud();
-            return dal.Create(company);
+            return new CompanyCrud();
         }
     }
 }

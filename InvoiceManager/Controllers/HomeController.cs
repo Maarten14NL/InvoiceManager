@@ -23,8 +23,8 @@ namespace InvoiceManager.Controllers
     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         public ActionResult About()
         {
-            GenerateInvoice invoiceService = new GenerateInvoice(GetDataFilePath());
-            invoiceService.Generate();
+            Invoices invoiceService = new Invoices();
+            invoiceService.Generate(new List<CompanyEntity>(), GetDataFilePath());
 
             ViewBag.Message = "Your application description page.";
 
