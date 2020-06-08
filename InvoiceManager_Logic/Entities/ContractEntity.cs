@@ -1,4 +1,5 @@
 ﻿using InvoiceMananger_DatabaseInterface;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace InvoiceManager_Logic.Entities
         public double Price;
         public bool Hide;
 
+        [JsonConstructor]
         public ContractEntity(int Id, string Name, string Description, double Price, bool Hide)
         {
             this.Id = Id;

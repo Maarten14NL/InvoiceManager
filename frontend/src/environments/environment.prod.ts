@@ -5,4 +5,7 @@
  */
 export const environment = {
   production: true,
+  api: {
+    url: "https://i431901.venus.fhict.nl"
+  },
 };

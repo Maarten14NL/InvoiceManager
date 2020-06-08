@@ -12,3 +12,5 @@ C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Release\InvoiceManager_Log
 C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Release\InvoiceManager_Logic.csproj.CopyComplete
 C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Release\InvoiceManager_Logic.dll
 C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Release\InvoiceManager_Logic.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\Newtonsoft.Json.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\Newtonsoft.Json.xml

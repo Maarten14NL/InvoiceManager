@@ -21,15 +21,6 @@ namespace InvoiceManager.Controllers
         private static string GetDataFilePath() => HttpRuntime.AppDomainAppVirtualPath != null ?
     Path.Combine(HttpRuntime.AppDomainAppPath, "App_templates") :
     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        public ActionResult About()
-        {
-            Invoices invoiceService = new Invoices();
-            invoiceService.Generate(new List<CompanyEntity>(), GetDataFilePath());
-
-            ViewBag.Message = "Your application description page.";
-
-            return Json(new { foo = "bar", baz = "Blech" }, JsonRequestBehavior.AllowGet);
-        }
 
         public ActionResult Contact()
         {

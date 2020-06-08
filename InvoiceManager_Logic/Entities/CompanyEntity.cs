@@ -1,11 +1,12 @@
 ﻿using InvoiceMananger_DatabaseInterface;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvoiceManager_Logic
+namespace InvoiceManager_Logic.Entities
 {
     public class CompanyEntity
     {
@@ -20,6 +21,7 @@ namespace InvoiceManager_Logic
         public string MandateDate;
         public bool Hide;
 
+        [JsonConstructor]
         public CompanyEntity(int Id, string Name, string CustomerNumber, string Iban, string IbanAscription, string PhoneNumber, string Website, string Email, string MandateDate, bool Hide)
         {
             this.Id = Id;

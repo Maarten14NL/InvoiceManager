@@ -25,7 +25,7 @@ namespace InvoiceManager_Logic.Entities
         public CompanyContractsEntity(CompanyContractsDto companyContracts)
         {
             this.Id = companyContracts.Id;
-            this.Company = new CompanyEntity(companyContracts.Company);
+            //this.Company = new CompanyEntity(companyContracts.Company);
             this.Contract = new ContractEntity(companyContracts.Contract);
             this.Amount = companyContracts.Amount;
         }

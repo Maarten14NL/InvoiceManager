@@ -74,7 +74,7 @@ export class SmartTableComponent {
     private http: HttpService,
     private alert: AlertService,
   ) {
-    this.http.Get('https://localhost:44372/company/read').subscribe(
+    this.http.Get('/company/read').subscribe(
       data => {
         this.source.load(data.companies);
 
@@ -89,7 +89,7 @@ export class SmartTableComponent {
   onCreateConfirm( event ): void {
     const company = event.newData;
     // if ( company.Name && company.Description && company.Price ) {
-      this.http.Post('https://localhost:44372/company/create', company).subscribe(
+      this.http.Post('/company/create', company).subscribe(
         data => {
           this.alert.Success('invoice is generated');
         },
@@ -104,7 +104,7 @@ export class SmartTableComponent {
     const company = event.newData;
     if (event.data !== company) {
       // if ( company.Name && company.Description && company.Price ) {
-        this.http.Post('https://localhost:44372/company/edit', company).subscribe(
+        this.http.Post('/company/edit', company).subscribe(
         data => { this.alert.Success('invoice is generated'); },
         err => { this.alert.Error(err.message); },
       );
@@ -115,7 +115,7 @@ export class SmartTableComponent {
   onDeleteConfirm( event ): void {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
-      this.http.Post('https://localhost:44372/company/delete', event.data).subscribe(
+      this.http.Post('/company/delete', event.data).subscribe(
         data => {
           this.alert.Success('invoice is generated');
         },

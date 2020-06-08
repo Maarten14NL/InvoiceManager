@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 // const httpOptions = {
 //     headers: new HttpHeaders({
@@ -18,7 +19,7 @@ export class HttpService {
 
     // Uses http.get() to load data from a single API endpoint
     Get = function (url) {
-        return this._http.get(url);
+        return this._http.get(this.setUrl(url));
     };
 
     Post = function (url, data) {
@@ -27,7 +28,7 @@ export class HttpService {
         body.append('data', JSON.stringify(data));
 
 
-        return this._http.post(url, body);
+        return this._http.post(this.setUrl(url), body);
     };
 
     DownLoadFile = function (url) {
@@ -38,6 +39,11 @@ export class HttpService {
             }),
         };
 
-        return this.HttpClient.get(url, downloadOptions);
+        return this.HttpClient.get(this.setUrl(url), downloadOptions);
     };
+
+    private setUrl(url)
+    {
+        return environment.api.url + url;
+    }
 }
