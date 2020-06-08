@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAAtp0rispFkq0KdOoBf2QeAAAAAACAAAAAAAQZgAAAAEAACAAAAAGUwOdtBkzi5XLflHdPl14bfF2EmXjuQ7z+9EjzU66AAAAAAAOgAAAAAIAACAAAAB+XylzooOH9UXratKjsdChmN+4j3KQCRHD84LbzClHVSAAAAC9ByRSqj8xz96nT2+17spx7+5DApSasF+kRmwAr8NJ40AAAAA/0yN4pZnS3AV7wHO67zEIVZ0pGGjMQmwv5QLpjAuRUPSL/hzVlKBYXayuSBrBRghbWUm84xcw4Fdcf6kB0m4I</EncryptedPassword>
+    <_PublishTargetUrl>ftp://venus.fhict.nl/domains/i431901.venus.fhict.nl</_PublishTargetUrl>
+  </PropertyGroup>
+</Project>

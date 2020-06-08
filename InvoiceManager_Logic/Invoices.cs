@@ -16,13 +16,15 @@ namespace InvoiceManager_Logic
             companies = c.Read(1);
             foreach (CompanyEntity company in companies)
             {
-                CompanyContracts cc = new CompanyContracts();
-                List<CompanyContractsEntity> companyContractsList = cc.GetByCompany(company.Id);
-
                 GenerateInvoice generateInvoice = new GenerateInvoice(storagePath);
 
+                generateInvoice.Generate(FindAndReplace(company), TableFields(company));
+            }
+        }
 
-                List<PlaceHolder> replaceWords = new List<PlaceHolder>
+        private List<PlaceHolder> FindAndReplace(CompanyEntity company)
+        {
+            List<PlaceHolder> replaceWords = new List<PlaceHolder>
                 {
                     new PlaceHolder("<Today>", "18-02-2020"),
                     new PlaceHolder("<Organisation.Name>", "test"),
@@ -38,22 +40,30 @@ namespace InvoiceManager_Logic
                     new PlaceHolder("<Company.CustomerNumber>", company.CustomerNumber),
                 };
 
-                List<List<PlaceHolder>> tableFields = new List<List<PlaceHolder>>();
-                foreach (CompanyContractsEntity companyContract in companyContractsList)
-                {
-                    double _price = companyContract.Amount * companyContract.Contract.Price;
+            return replaceWords;
+        }
 
-                    List<PlaceHolder> tableField = new List<PlaceHolder>
+        private List<List<PlaceHolder>> TableFields(CompanyEntity company)
+        {
+            CompanyContracts cc = new CompanyContracts();
+            List<CompanyContractsEntity> companyContractsList = cc.GetByCompany(company.Id);
+
+            List<List<PlaceHolder>> tableFields = new List<List<PlaceHolder>>();
+            foreach (CompanyContractsEntity companyContract in companyContractsList)
+            {
+                double _price = companyContract.Amount * companyContract.Contract.Price;
+
+                List<PlaceHolder> tableField = new List<PlaceHolder>
                     {
                         new PlaceHolder("<Invoice.Name>", companyContract.Contract.Name),
                         new PlaceHolder("<Invoice.Amount>", companyContract.Amount.ToString()),
                         new PlaceHolder("<Invoice.Price>", _price.ToString()),
                     };
-                    tableFields.Add(tableField);
+                tableFields.Add(tableField);
 
-                }
-                generateInvoice.Generate(replaceWords, tableFields);
             }
+
+            return tableFields;
         }
     }
 }

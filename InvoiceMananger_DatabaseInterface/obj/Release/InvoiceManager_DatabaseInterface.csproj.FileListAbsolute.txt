@@ -1,0 +1,6 @@
+C:\fontys\git\InvoiceManager\InvoiceMananger_DatabaseInterface\bin\Release\InvoiceMananger_DatabaseInterface.dll
+C:\fontys\git\InvoiceManager\InvoiceMananger_DatabaseInterface\bin\Release\InvoiceMananger_DatabaseInterface.pdb
+C:\fontys\git\InvoiceManager\InvoiceMananger_DatabaseInterface\obj\Release\InvoiceManager_DatabaseInterface.csprojAssemblyReference.cache
+C:\fontys\git\InvoiceManager\InvoiceMananger_DatabaseInterface\obj\Release\InvoiceManager_DatabaseInterface.csproj.CoreCompileInputs.cache
+C:\fontys\git\InvoiceManager\InvoiceMananger_DatabaseInterface\obj\Release\InvoiceMananger_DatabaseInterface.dll
+C:\fontys\git\InvoiceManager\InvoiceMananger_DatabaseInterface\obj\Release\InvoiceMananger_DatabaseInterface.pdb

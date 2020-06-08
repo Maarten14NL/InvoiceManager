@@ -1,0 +1,12 @@
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\bin\Release\InvoiceManager_Factory.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\bin\Release\InvoiceManager_Factory.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\bin\Release\InvoiceManager_Database.exe
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\bin\Release\InvoiceMananger_DatabaseInterface.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\bin\Release\InvoiceManager_Database.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\bin\Release\InvoiceManager_Database.exe.config
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\bin\Release\InvoiceMananger_DatabaseInterface.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\obj\Release\InvoiceManager_Factory.csprojAssemblyReference.cache
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\obj\Release\InvoiceManager_Factory.csproj.CoreCompileInputs.cache
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\obj\Release\InvoiceManager_Factory.csproj.CopyComplete
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\obj\Release\InvoiceManager_Factory.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Factory\obj\Release\InvoiceManager_Factory.pdb

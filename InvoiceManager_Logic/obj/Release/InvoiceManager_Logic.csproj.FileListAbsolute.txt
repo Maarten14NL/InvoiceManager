@@ -1,0 +1,14 @@
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\InvoiceManager_Logic.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\InvoiceManager_Logic.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\InvoiceManager_Factory.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\InvoiceMananger_DatabaseInterface.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\InvoiceManager_Database.exe
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\InvoiceManager_Factory.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\InvoiceMananger_DatabaseInterface.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\InvoiceManager_Database.pdb
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\bin\Release\InvoiceManager_Database.exe.config
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Release\InvoiceManager_Logic.csprojAssemblyReference.cache
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Release\InvoiceManager_Logic.csproj.CoreCompileInputs.cache
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Release\InvoiceManager_Logic.csproj.CopyComplete
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Release\InvoiceManager_Logic.dll
+C:\fontys\git\InvoiceManager\InvoiceManager_Logic\obj\Release\InvoiceManager_Logic.pdb

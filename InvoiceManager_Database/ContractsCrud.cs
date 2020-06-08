@@ -58,7 +58,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Insert(sql);
+            conn.Insert(sql);
 
             return true;
         }
@@ -75,7 +75,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Update(sql);
+            conn.Update(sql);
 
             return true;
         }
@@ -88,7 +88,7 @@ namespace InvoiceManager_Database
             String sql = sb.ToString();
 
             Connection conn = new Connection();
-            var reader = conn.Delete(sql);
+            conn.Delete(sql);
 
             return true;
         }
