@@ -46,12 +46,22 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Companies',
     icon: 'archive-outline',
-    link: '/pages/companies/smart-table',
+    link: '/companies',
+    children: [
+      {
+        title: 'Companies',
+        link: '/companies',
+      },
+      {
+        title: 'Add new company',
+        link: '/companies/create',
+      },
+    ],
   },
   {
     title: 'Contracts',
     icon: 'archive-outline',
-    link: '/pages/contracts/smart-table',
+    link: '/contracts',
   },
   {
     title: 'Generate',
@@ -59,7 +69,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Invoice',
-        link: '/pages/generate/invoice',
+        link: '/generate/invoice',
       },
     ],
   },

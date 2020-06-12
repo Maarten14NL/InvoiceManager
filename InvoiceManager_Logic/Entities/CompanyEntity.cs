@@ -53,10 +53,10 @@ namespace InvoiceManager_Logic.Entities
         public bool Valid()
         {
             if (
-                Name == null ||
-                Iban == null ||
-                IbanAscription == null ||
-                Email == null ||
+                Name == "" ||
+                Iban == "" ||
+                IbanAscription == "" ||
+                Email == "" ||
                 MandateDate == null
                 )
             {

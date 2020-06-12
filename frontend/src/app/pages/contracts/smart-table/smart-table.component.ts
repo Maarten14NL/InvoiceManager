@@ -71,7 +71,11 @@ export class SmartTableComponent {
     if ( contract.Name && contract.Description && contract.Price ) {
       this.http.Post('/contract/create', contract).subscribe(
         data => {
-          this.alert.Success('invoice is generated');
+          if (data.success) {
+            this.alert.Success('Contract is created');
+          } else {
+            this.alert.Error('Contract is NOT created');
+          }
         },
         err => {
           this.alert.Error(err.message);
@@ -85,7 +89,13 @@ export class SmartTableComponent {
     if (event.data !== contract) {
       if ( contract.Name && contract.Description && contract.Price ) {
         this.http.Post('/contract/edit', contract).subscribe(
-        data => { this.alert.Success('invoice is generated'); },
+        data => {
+          if (data.success) {
+            this.alert.Success('Contract is edited');
+          } else {
+            this.alert.Error('Contract is NOT edited');
+          }
+         },
         err => { this.alert.Error(err.message); },
       );
       }

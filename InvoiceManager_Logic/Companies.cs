@@ -17,15 +17,15 @@ namespace InvoiceManager_Logic
             
             List<CompanyDto> companiesList = _CompanyDal.Read(id);
 
-            List<CompanyEntity> test = new List<CompanyEntity>();
+            List<CompanyEntity> companyEntities = new List<CompanyEntity>();
 
             foreach (var company in companiesList)
             {
-                CompanyEntity c = new CompanyEntity(company);
-                test.Add(c);
+                CompanyEntity companyEnity = new CompanyEntity(company);
+                companyEntities.Add(companyEnity);
             }
 
-            return test;
+            return companyEntities;
         }
 
         public bool Create(CompanyEntity company)

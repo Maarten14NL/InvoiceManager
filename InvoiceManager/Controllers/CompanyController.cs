@@ -25,23 +25,20 @@ namespace InvoiceManager.Controllers
         {
             CompanyEntity givenCompanies = JsonConvert.DeserializeObject<CompanyEntity>(data);
             Companies cont = new Companies();
-            cont.Create(givenCompanies);
 
-            return Json(new { companies = givenCompanies }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = cont.Create(givenCompanies) }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Edit(String data)
         {
             CompanyEntity givenCompanies = JsonConvert.DeserializeObject<CompanyEntity>(data);
             Companies cont = new Companies();
-            cont.Update(givenCompanies);
 
-            return Json(new { companies = givenCompanies }, JsonRequestBehavior.AllowGet);
+            return Json(new { success = cont.Update(givenCompanies) }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(String data)
         {
-            //string Data = "{'Name':'1','CustomerNumber':'2','Iban':'5','IbanAscription':'6','PhoneNumber':'7','Website':'8','Email':'9','MandateDate':'1-1-1900 00:00:00','Hide':false}";
             CompanyEntity deleteCompanies = JsonConvert.DeserializeObject<CompanyEntity>(data);
             Companies cont = new Companies();
             cont.Delete(deleteCompanies);

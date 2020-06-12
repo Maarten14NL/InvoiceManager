@@ -12,19 +12,26 @@ using System.Web.UI.WebControls;
 
 namespace InvoiceManager_Logic
 {
+
     public class GenerateInvoice
     {
-        public string GetDataFilePath { private get;  set; }
+        private readonly List<PlaceHolder> _ReplaceWords;
+        private readonly List<List<PlaceHolder>> _TableFields;
+        private readonly string _GetDataFilePath;
+        private readonly string _InvoiceName = "test";
 
-        private readonly FileService fileService = new FileService();
-        private static object missing = Missing.Value;
+        private readonly FileService _FileService = new FileService();
+        private static object _Missing = Missing.Value;
 
-        public GenerateInvoice(string projectPath)
+        public GenerateInvoice(string projectPath, List<PlaceHolder> replaceWords, List<List<PlaceHolder>> tableFields)
         {
-            GetDataFilePath = projectPath;
+            _GetDataFilePath = projectPath;
+            _ReplaceWords = replaceWords;
+            _TableFields = tableFields;
+            Generate();
         }
 
-        private void ReplacePlaceHolders(word.Application wordApp, object findText, object replaceText)
+        private void ReplacePlaceHolders(word.Application wordApp)
         {
             object matchCase = true;
             object matchWholeWord = true;
@@ -41,7 +48,13 @@ namespace InvoiceManager_Logic
             object wrap = 1;
 
             //word find and replace function.
-            wordApp.Selection.Find.Execute(
+            foreach (PlaceHolder replaceWord in _ReplaceWords)
+            {
+
+                object findText = replaceWord.Placeholder;
+                object replaceText = replaceWord.NewValue;
+
+                wordApp.Selection.Find.Execute(
                 ref findText,
                 ref matchCase,
                 ref matchWholeWord,
@@ -58,9 +71,10 @@ namespace InvoiceManager_Logic
                 ref matchAlefHamza,
                 ref matchControl
               );
+            }
         }
 
-        private void FillTables(word.Document document, List<List<PlaceHolder>> tableFields)
+        private void FillTables(word.Document document)
         {
             object test = "invoiceTable";
 
@@ -68,7 +82,7 @@ namespace InvoiceManager_Logic
             foreach (word.Table tables in wrdRng.Tables)
             {
                 int rowCounter = 0;
-                foreach (List<PlaceHolder> fields in tableFields)
+                foreach (List<PlaceHolder> fields in _TableFields)
                 {
                     word.Table tab = tables;
                     word.Range range = tab.Range;
@@ -82,7 +96,7 @@ namespace InvoiceManager_Logic
                     range.Copy();
 
                     // Insert a new row after the last row.
-                    tab.Rows.Add(ref missing);
+                    tab.Rows.Add(ref _Missing);
 
                     // Moves the cursor to the first cell of target row.
                     range.Start = tab.Rows[tab.Rows.Count].Cells[1].Range.Start;
@@ -101,7 +115,7 @@ namespace InvoiceManager_Logic
 
 
                     // Paste values to target row.
-                    if (rowCounter < tableFields.Count - 1)
+                    if (rowCounter < _TableFields.Count - 1)
                     {
                         range.Paste();
                     }
@@ -135,12 +149,12 @@ namespace InvoiceManager_Logic
 
                 document.SaveAs2(
                     ref fileName,
-                    ref format, ref missing, ref missing,
-                    ref missing, ref missing, ref missing,
-                    ref missing, ref missing, ref missing,
-                    ref missing, ref missing, ref missing,
-                    ref missing, ref missing, ref missing,
-                    ref missing
+                    ref format, ref _Missing, ref _Missing,
+                    ref _Missing, ref _Missing, ref _Missing,
+                    ref _Missing, ref _Missing, ref _Missing,
+                    ref _Missing, ref _Missing, ref _Missing,
+                    ref _Missing, ref _Missing, ref _Missing,
+                    ref _Missing
                 );
             }
             catch
@@ -149,15 +163,14 @@ namespace InvoiceManager_Logic
             }
         }
 
-        public void Generate(List<PlaceHolder> replaceWords, List<List<PlaceHolder>> tableFields)
+        private void Generate()
         {
-            string invoiceName = "test";
-            string templatePath = GetDataFilePath;
+            
             //string path = Path.Combine(Environment.CurrentDirectory, @"App_templates\", file);
 
-            object fileName = templatePath + "\\invoiceTemplate.docx";
-            object invoiceFileName = templatePath + "\\" + invoiceName + ".docx";
-            fileService.CopyFile(fileName.ToString(), invoiceFileName.ToString());
+            object fileName = _GetDataFilePath + "\\invoiceTemplate.docx";
+            object invoiceFileName = _GetDataFilePath + "\\" + _InvoiceName + ".docx";
+            _FileService.CopyFile(fileName.ToString(), invoiceFileName.ToString());
 
             word.Application wordApp = new word.Application();
             word.Document invoice = null;
@@ -174,34 +187,33 @@ namespace InvoiceManager_Logic
 
                 invoice = wordApp.Documents.Open(
                     ref invoiceFileName,
-                    ref missing,
+                    ref _Missing,
                     ref readOnly,
-                    ref missing, ref missing, ref missing,
-                    ref missing, ref missing, ref missing,
-                    ref missing, ref missing, ref missing,
-                    ref missing, ref missing, ref missing,
-                    ref missing
+                    ref _Missing, ref _Missing, ref _Missing,
+                    ref _Missing, ref _Missing, ref _Missing,
+                    ref _Missing, ref _Missing, ref _Missing,
+                    ref _Missing, ref _Missing, ref _Missing,
+                    ref _Missing
                 );
 
                 invoice.Activate();
 
                 //find and replace-
-                foreach (PlaceHolder replaceWord in replaceWords)
-                {
-                    ReplacePlaceHolders(wordApp, replaceWord.Placeholder, replaceWord.NewValue);
-                }
+                ReplacePlaceHolders(wordApp);
 
                 //populate table
-                this.FillTables(invoice, tableFields);
+                this.FillTables(invoice);
 
                 //save invoice
-                object saveAs = templatePath + "\\" + invoiceName + ".pdf";
+                object saveAs = _GetDataFilePath + "\\" + _InvoiceName + ".pdf";
                 this.SaveDocument(invoice, saveAs);
 
                 //close Document
-                invoice.Close(ref missing, ref missing, ref missing);
-                fileService.Zip(templatePath, "invoice.zip", saveAs.ToString());
-                fileService.DeleteFile(templatePath + "\\" + invoiceName + ".docx");
+                invoice.Close(ref _Missing, ref _Missing, ref _Missing);
+
+                //zip document
+                _FileService.Zip(_GetDataFilePath, "invoice.zip", saveAs.ToString());
+                _FileService.DeleteFile(_GetDataFilePath + "\\" + _InvoiceName + ".docx");
             }
         }
     }

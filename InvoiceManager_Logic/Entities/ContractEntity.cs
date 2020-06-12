@@ -40,7 +40,7 @@ namespace InvoiceManager_Logic.Entities
             if (
                 Name == null ||
                 Description == null ||
-                Price == null
+                Price == 0
                 )
             {
                 return false;

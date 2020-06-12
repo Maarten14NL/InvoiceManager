@@ -15,39 +15,32 @@ namespace InvoiceManager.Controllers
     [AllowCrossSiteJsonAttribute]
     public class ContractController : Controller
     {
+        private readonly Contracts cont = new Contracts();
+
         public ContractController() {}
 
         public ActionResult Read(int? id)
         {
-            Contracts cont = new Contracts();
             var Contracts = cont.Read(id);
-
             return Json(new { contracts = Contracts }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create(String data)
         {
-            ContractEntity givenContract = JsonConvert.DeserializeObject<ContractEntity>(data);
-            Contracts cont = new Contracts();
-            cont.Create(givenContract);
-
-            return Json(new { contracts = givenContract }, JsonRequestBehavior.AllowGet);
+            ContractEntity givenContract = JsonConvert.DeserializeObject<ContractEntity>(data);            
+            return Json(new { success = cont.Create(givenContract) }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Edit(String data)
         {
 
-            ContractEntity givenContract = JsonConvert.DeserializeObject<ContractEntity>(data);
-            Contracts cont = new Contracts();
-            cont.Update(givenContract);
-
-            return Json(new { contracts = givenContract }, JsonRequestBehavior.AllowGet);
+            ContractEntity givenContract = JsonConvert.DeserializeObject<ContractEntity>(data);            
+            return Json(new { success = cont.Update(givenContract) }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(String data)
         {
             ContractEntity deleteContract = JsonConvert.DeserializeObject<ContractEntity>(data);
-            Contracts cont = new Contracts();
             cont.Delete(deleteContract);
 
             return Json(new { contracts = deleteContract }, JsonRequestBehavior.AllowGet);

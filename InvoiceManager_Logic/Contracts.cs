@@ -15,14 +15,14 @@ namespace InvoiceManager_Logic
         public List<ContractEntity> Read(int? id = null)
         {
             List<ContractDto> contractsList = _ContractDal.Read(id);
-            List<ContractEntity> test = new List<ContractEntity>();
+            List<ContractEntity> contractEntities = new List<ContractEntity>();
             foreach (var contract in contractsList)
             {
-                ContractEntity c = new ContractEntity(contract);
+                ContractEntity contractEntity = new ContractEntity(contract);
 
-                test.Add(c);
+                contractEntities.Add(contractEntity);
             }
-            return test;
+            return contractEntities;
         }
         public bool Create(ContractEntity contract)
         {

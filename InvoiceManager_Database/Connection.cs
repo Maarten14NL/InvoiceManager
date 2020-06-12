@@ -41,8 +41,9 @@ namespace InvoiceManager_Database
             //}
         }
 
-        private readonly string connectionString = "Server=mssql.fhict.local;Database=dbi431901;User Id=dbi431901;Password=Doo0sNZ26m";
-        
+        //private readonly string connectionString = "Server=mssql.fhict.local;Database=dbi431901;User Id=dbi431901;Password=Doo0sNZ26m";
+        private readonly string connectionString = "Server=(LocalDb)\\MSSQLLocalDB;Database=aspnet-InvoiceManager-20200211010222;Trusted_Connection=true";
+
 
         public DataTableReader Select(string sql)
         {

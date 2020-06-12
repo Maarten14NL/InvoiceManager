@@ -19,7 +19,7 @@ export class HttpService {
 
     // Uses http.get() to load data from a single API endpoint
     Get = function (url) {
-        return this._http.get(this.setUrl(url));
+        return this._http.get(this._setUrl(url));
     };
 
     Post = function (url, data) {
@@ -28,7 +28,7 @@ export class HttpService {
         body.append('data', JSON.stringify(data));
 
 
-        return this._http.post(this.setUrl(url), body);
+        return this._http.post(this._setUrl(url), body);
     };
 
     DownLoadFile = function (url) {
@@ -39,11 +39,11 @@ export class HttpService {
             }),
         };
 
-        return this.HttpClient.get(this.setUrl(url), downloadOptions);
+        return this.HttpClient.get(this._setUrl(url), downloadOptions);
     };
 
-    private setUrl(url)
+    private _setUrl = function(url)
     {
         return environment.api.url + url;
-    }
+    };
 }

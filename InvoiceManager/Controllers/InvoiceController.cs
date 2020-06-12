@@ -5,53 +5,30 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
-using InvoiceManager.Services;
+using InvoiceManager_Logic;
+using InvoiceManager_Logic.Entities;
+using Newtonsoft.Json;
 
 namespace InvoiceManager.Controllers
 {
+
     [AllowCrossSiteJsonAttribute]
     public class InvoiceController : Controller
     {
-        private readonly FileService fileService = new FileService();
-        public ActionResult Generate()
+        private readonly Invoices invoice = new Invoices();
+
+        //private readonly FileService fileService = new FileService();
+        public ActionResult Generate(string data)
         {
-            InvoiceService invoiceService = new InvoiceService();
-            invoiceService.Generate();
+            List<CompanyEntity> givenCompanies = JsonConvert.DeserializeObject<List<CompanyEntity>>(data);
+            invoice.Generate(givenCompanies, GetDataFilePath());
 
-            ViewBag.Message = "Your application description page.";
-
-            return Json(new { foo = "bar", baz = "Blech" }, JsonRequestBehavior.AllowGet);
+            return Json(givenCompanies, JsonRequestBehavior.AllowGet);
         }
 
         private static string GetDataFilePath() => HttpRuntime.AppDomainAppVirtualPath != null ?
         Path.Combine(HttpRuntime.AppDomainAppPath, "App_templates") :
         Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-        //public ActionResult Download()
-        //{
-        //    string templatePath = GetDataFilePath();
-        //    //File to be downloaded.
-        //    string fileName = "invoice.zip";
-
-        //    //Path of the File to be downloaded.
-        //    string filePath = fileName = templatePath + "\\" + fileName;
-
-        //    //Content Type and Header.
-        //    Response.ContentType = "application/pdf";
-        //    Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
-        //    //Writing the File to Response Stream.
-        //    Response.WriteFile(filePath);
-
-        //    //Flushing the Response.
-        //    Response.Flush();
-
-        //    //Deleting the File and ending the Response.
-        //    //File.Delete(filePath);
-        //    fileService.DeleteFile(filePath);
-        //    Response.End();
-
-        //    return Json(new { foo = "bar", baz = "Blech" }, JsonRequestBehavior.AllowGet);
-        //}
 
         public FileResult Download()
         {

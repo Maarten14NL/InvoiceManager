@@ -1,11 +1,11 @@
 <div class="lists row">
   <div class="col-md-12 col-lg-6 col-xxxl-6">
     <nb-card class="list-card">
-      <nb-card-header>Some Fruits</nb-card-header>
+      <nb-card-header>Select companies for invoices</nb-card-header>
       <nb-card-body>
         <nb-list>
-          <nb-list-item *ngFor="let fruit of fruits">
-            <nb-checkbox>{{ fruit }}</nb-checkbox>
+          <nb-list-item *ngFor="let company of companies">
+            <nb-checkbox [(ngModel)]="company.isChecked" (change)="setInvoiceCompanies()">{{ company.Name }}</nb-checkbox>
           </nb-list-item>
         </nb-list>
       </nb-card-body>

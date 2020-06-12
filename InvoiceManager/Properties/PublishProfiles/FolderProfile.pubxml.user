@@ -22,37 +22,37 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 14:15:20</publishTime>
     </File>
     <File Include="bin/InvoiceManager.dll">
-      <publishTime>06/05/2020 14:40:47</publishTime>
+      <publishTime>06/11/2020 16:08:29</publishTime>
     </File>
     <File Include="bin/InvoiceManager.pdb">
-      <publishTime>06/05/2020 14:40:47</publishTime>
+      <publishTime>06/11/2020 16:08:29</publishTime>
     </File>
     <File Include="bin/InvoiceManager_Database.exe">
-      <publishTime>06/05/2020 14:40:46</publishTime>
+      <publishTime>06/11/2020 16:08:28</publishTime>
     </File>
     <File Include="bin/InvoiceManager_Database.exe.config">
       <publishTime>03/24/2020 12:10:49</publishTime>
     </File>
     <File Include="bin/InvoiceManager_Database.pdb">
-      <publishTime>06/05/2020 14:40:46</publishTime>
+      <publishTime>06/11/2020 16:08:28</publishTime>
     </File>
     <File Include="bin/InvoiceManager_Factory.dll">
-      <publishTime>06/05/2020 14:40:46</publishTime>
+      <publishTime>06/11/2020 16:08:29</publishTime>
     </File>
     <File Include="bin/InvoiceManager_Factory.pdb">
-      <publishTime>06/05/2020 14:40:46</publishTime>
+      <publishTime>06/11/2020 16:08:29</publishTime>
     </File>
     <File Include="bin/InvoiceManager_Logic.dll">
-      <publishTime>06/05/2020 14:40:46</publishTime>
+      <publishTime>06/11/2020 16:08:29</publishTime>
     </File>
     <File Include="bin/InvoiceManager_Logic.pdb">
-      <publishTime>06/05/2020 14:40:46</publishTime>
+      <publishTime>06/11/2020 16:08:29</publishTime>
     </File>
     <File Include="bin/InvoiceMananger_DatabaseInterface.dll">
-      <publishTime>03/06/2020 14:02:43</publishTime>
+      <publishTime>06/11/2020 16:08:28</publishTime>
     </File>
     <File Include="bin/InvoiceMananger_DatabaseInterface.pdb">
-      <publishTime>03/06/2020 14:02:43</publishTime>
+      <publishTime>06/11/2020 16:08:28</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>04/24/2018 13:47:38</publishTime>
@@ -493,7 +493,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/11/2020 13:02:11</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/05/2020 14:40:47</publishTime>
+      <publishTime>06/08/2020 15:38:04</publishTime>
     </File>
   </ItemGroup>
 </Project>

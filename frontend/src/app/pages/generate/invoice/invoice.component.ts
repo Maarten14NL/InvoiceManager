@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { fruits } from './fruits-list';
 // import { generate } from 'rxjs';
 import { HttpService } from '../../../services/http.service';
 import { AlertService } from '../../../services/alert.service';
@@ -10,20 +9,33 @@ import { AlertService } from '../../../services/alert.service';
   styleUrls: ['invoice.component.scss'],
 })
 export class InvoiceComponent {
+
+  companies = [];
   constructor(
     private http: HttpService,
     private alert: AlertService,
-  ) { }
+  ) {
+    this.http.Get('/company/read').subscribe(
+      data => {
+        this.companies = data.companies;
 
-  fruits = fruits;
+        // this.alert.Success('invoice is generated');
+      },
+      err => {
+        this.alert.Error(err.message);
+      },
+    );
+  }
 
-  users: { name: string, title: string }[] = [
-    { name: 'Carla Espinosa', title: 'Nurse' },
-    { name: 'Bob Kelso', title: 'Doctor of Medicine' },
-    { name: 'Janitor', title: 'Janitor' },
-    { name: 'Perry Cox', title: 'Doctor of Medicine' },
-    { name: 'Ben Sullivan', title: 'Carpenter and photographer' },
-  ];
+  invoiceCompanies = [];
+  setInvoiceCompanies() {
+    this.invoiceCompanies = [];
+    this.companies.forEach((value, index) => {
+      if (value.isChecked) {
+        this.invoiceCompanies.push(value);
+      }
+    });
+  }
 
   receivingData = false;
   downloadReady = false;
@@ -32,7 +44,7 @@ export class InvoiceComponent {
     let d;
     this.receivingData = true;
 
-    this.http.Get('/invoice/generate').subscribe(
+    this.http.Post('/invoice/generate', this.invoiceCompanies).subscribe(
       data => {
         d = data;
         this.alert.Success('invoice is generated');

@@ -12,13 +12,11 @@ namespace InvoiceManager_Logic
     {
         public void Generate(List<CompanyEntity> companies, string storagePath)
         {
-            Companies c = new Companies();
-            companies = c.Read(1);
+            //Companies c = new Companies();
+            //companies = c.Read(1);
             foreach (CompanyEntity company in companies)
             {
-                GenerateInvoice generateInvoice = new GenerateInvoice(storagePath);
-
-                generateInvoice.Generate(FindAndReplace(company), TableFields(company));
+               new GenerateInvoice(storagePath, FindAndReplace(company), TableFields(company));
             }
         }
 
