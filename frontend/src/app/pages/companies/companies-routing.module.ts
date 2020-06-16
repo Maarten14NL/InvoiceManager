@@ -7,6 +7,7 @@ import { SmartTableComponent } from './smart-table/smart-table.component';
 import { TreeGridComponent } from './tree-grid/tree-grid.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
+import { CompanyContractsComponent } from './contracts/company-contracts.component';
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +25,10 @@ const routes: Routes = [{
       path: 'edit/:companyId',
       component: EditComponent,
     },
+    {
+      path: 'contracts/:companyId',
+      component: CompanyContractsComponent,
+    },
   ],
 }];
 
@@ -40,4 +45,5 @@ export const routedComponents = [
   SmartTableComponent,
   TreeGridComponent,
   EditComponent,
+  CompanyContractsComponent,
 ];

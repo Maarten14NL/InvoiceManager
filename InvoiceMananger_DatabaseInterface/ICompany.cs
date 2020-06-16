@@ -28,6 +28,11 @@ namespace InvoiceMananger_DatabaseInterface
         public string Email;
         public Nullable<DateTime> MandateDate;
         public bool Hide;
-        public List<CompanyContractsDto?> CompanyContracts;
+        public int? TotalContracts;
+
+        public string ConvertNullableDateTimeToString(Nullable<DateTime> dateTime)
+        {
+            return (dateTime != null) ? dateTime.Value.ToString("yyyy-MM-dd HH:mm:ss") : null;
+        }
     }
 }

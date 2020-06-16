@@ -10,3 +10,4 @@ C:\fontys\CircusTrein\CT_UI\obj\Debug\CT_UI.Form1.resources
 C:\fontys\CircusTrein\CT_UI\bin\Debug\CT_Logic.dll
 C:\fontys\CircusTrein\CT_UI\bin\Debug\CT_Logic.pdb
 C:\fontys\CircusTrein\CT_UI\obj\Debug\CT_UI.csproj.CopyComplete
+C:\fontys\CircusTrein\CT_UI\obj\Debug\CT_UI.csproj.CoreCompileInputs.cache

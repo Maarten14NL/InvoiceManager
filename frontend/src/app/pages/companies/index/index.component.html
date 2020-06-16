@@ -1,4 +1,7 @@
 <nb-card>
+  <nb-card-header>
+    Contracts
+  </nb-card-header>
   <nb-card-body>
 
     <label class="search-label" for="search">Search:</label>
@@ -15,7 +18,7 @@
       <tbody>
         <tr *ngFor="let company of companies">
           <th scope="row">{{company.Name}}</th>
-          <td><a routerLink="/companies/contracts">Contacts(1)</a></td>
+          <td><a routerLink="/companies/contracts/{{company.Id}}">Contacts({{company.TotalContracts}})</a></td>
           <td>
             <button nbButton status="primary" routerLink="/companies/edit/{{company.Id}}">
               <nb-icon icon="edit" pack="eva"></nb-icon>

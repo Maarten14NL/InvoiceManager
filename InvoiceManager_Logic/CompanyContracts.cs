@@ -11,6 +11,9 @@ namespace InvoiceManager_Logic
 {
     public class CompanyContracts
     {
+        private readonly Companies companies = new Companies();
+        private readonly Contracts contracts = new Contracts();
+
         private readonly ICompanyContracts _CompanyContractsDal = CompanyContractFactory.GetCompanyContract();
         public List<CompanyContractsEntity> Read()
         {
@@ -40,6 +43,33 @@ namespace InvoiceManager_Logic
                 test.Add(c);
             }
             return test;
+        }
+
+        public bool Create(CompanyContractsEntity companyContract)
+        {
+                return _CompanyContractsDal.Create(SetCompanyContractDto(companyContract));
+            //return false;
+        }
+
+        public bool Update(CompanyContractsEntity companyContract)
+        {
+            return _CompanyContractsDal.Update(SetCompanyContractDto(companyContract));
+            //return false;
+        }
+
+        private CompanyContractsDto SetCompanyContractDto(CompanyContractsEntity companyContract)
+        {
+            CompanyContractsDto companyContractsDto = new CompanyContractsDto
+            {
+                Id = companyContract.Id,
+                Company = companies.SetContractDto(companyContract.Company),
+                Contract = contracts.SetContractDto(companyContract.Contract),
+                Amount = companyContract.Amount,
+                StartDate = string.IsNullOrWhiteSpace(companyContract.StartDate) ? (DateTime?)null : DateTime.Parse(companyContract.StartDate),
+                EndDate = string.IsNullOrWhiteSpace(companyContract.EndDate) ? (DateTime?)null : DateTime.Parse(companyContract.EndDate)
+            };
+
+            return companyContractsDto;
         }
 
     }

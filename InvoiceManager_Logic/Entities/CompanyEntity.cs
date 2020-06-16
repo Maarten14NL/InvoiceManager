@@ -20,6 +20,7 @@ namespace InvoiceManager_Logic.Entities
         public string Email;
         public string MandateDate;
         public bool Hide;
+        public int? TotalContracts;
 
         [JsonConstructor]
         public CompanyEntity(int Id, string Name, string CustomerNumber, string Iban, string IbanAscription, string PhoneNumber, string Website, string Email, string MandateDate, bool Hide)
@@ -46,8 +47,9 @@ namespace InvoiceManager_Logic.Entities
             this.PhoneNumber = company.PhoneNumber;
             this.Website = company.Website;
             this.Email = company.Email;
-            this.MandateDate = company.MandateDate.ToString();
+            this.MandateDate = company.ConvertNullableDateTimeToString(company.MandateDate);
             this.Hide = company.Hide;
+            this.TotalContracts = (company.TotalContracts != null)? company.TotalContracts : null;
         }
 
         public bool Valid()

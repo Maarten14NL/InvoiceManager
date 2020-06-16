@@ -8,7 +8,9 @@ namespace CT_Logic
 {
     public class Distributor
     {
-
+        private readonly Train _train = new Train();
+        private List<Animal> _carnivores;
+        private List<Animal> _herbivores;
         public Distributor()
         {
 
@@ -16,52 +18,50 @@ namespace CT_Logic
 
         public Train DistributeAnimals(List<Animal> animalsToBeDistributed)
         {
-            Train train = new Train();
+
+            _carnivores = new List<Animal>(animalsToBeDistributed.FindAll(IsCarnivore));
+            _herbivores = new List<Animal>(animalsToBeDistributed.FindAll(IsHerbivore));
+
+            _carnivores.Sort((x, y) => string.Compare(x.AnimalSize.ToString(), y.AnimalSize.ToString()));
+            _herbivores.Sort((x, y) => string.Compare(x.AnimalSize.ToString(), y.AnimalSize.ToString()));
 
 
-            List<Animal> carnivores = new List<Animal>(animalsToBeDistributed.FindAll(isCarnivore));
-            List<Animal> herbivores = new List<Animal>(animalsToBeDistributed.FindAll(isHerbivore));
+            DevideCarnivoresInWagon();
+            DevideHerbivoresInWagon();
 
-            carnivores.Sort((x, y) => string.Compare(x.AnimalSize.ToString(), y.AnimalSize.ToString()));
-            herbivores.Sort((x, y) => string.Compare(x.AnimalSize.ToString(), y.AnimalSize.ToString()));
-
-
-            sortCarnivores(carnivores, herbivores, train);
-            sortHerbivores(herbivores, train);
-
-            return train;
+            return _train;
         }
 
-        private void sortCarnivores(List<Animal> carnivores, List<Animal> herbivores, Train train)
+        private void DevideCarnivoresInWagon()
         {
-            foreach (Animal carnivore in carnivores)
+            foreach (Animal carnivore in _carnivores)
             {
                 Wagon wagon = new Wagon();
                 wagon.animalsInWagon.Add(carnivore);
 
                 if (carnivore.AnimalSizeNumber != 5)
                 {
-                    List<Animal> availableHerbivores = new List<Animal>(herbivores.Where(x => x.AnimalSizeNumber > carnivore.AnimalSizeNumber).ToList());
+                    List<Animal> availableHerbivores = new List<Animal>(_herbivores.Where(x => x.AnimalSizeNumber > carnivore.AnimalSizeNumber).ToList());
 
-                    addHerbivoresToWagon(wagon, availableHerbivores);
+                    AddHerbivoresToWagon(wagon, availableHerbivores);
                 }
 
-                train.Wagons.Add(wagon);
+                _train.Wagons.Add(wagon);
             }
         }
 
-        private void sortHerbivores(List<Animal> herbivores, Train train)
+        private void DevideHerbivoresInWagon()
         {
-            while(herbivores.Count > 0)
+            while(_herbivores.Count > 0)
             {
                 Wagon wagon = new Wagon();
 
-                while (wagon.spaceLeft != 0 && herbivores.Count > 0)
+                while (wagon.SpaceLeft != 0 && _herbivores.Count > 0)
                 {
                     List<Animal> removeAnimal = new List<Animal>();
-                    foreach (Animal herbivore in herbivores)
+                    foreach (Animal herbivore in _herbivores)
                     {
-                        int preCalculate = wagon.spaceLeft - herbivore.AnimalSizeNumber;
+                        int preCalculate = wagon.SpaceLeft - herbivore.AnimalSizeNumber;
                         if (preCalculate >= 0)
                         {
                             removeAnimal.Add(herbivore);
@@ -71,23 +71,23 @@ namespace CT_Logic
 
                     foreach (Animal remove in removeAnimal)
                     {
-                        herbivores.Remove(remove);
+                        _herbivores.Remove(remove);
                     }
                 }
 
-                train.Wagons.Add(wagon);
+                _train.Wagons.Add(wagon);
             }
         }
 
-        private void addHerbivoresToWagon(Wagon wagon, List<Animal> availableHerbivores )
+        private void AddHerbivoresToWagon(Wagon wagon, List<Animal> availableHerbivores )
         {
             availableHerbivores.Sort((y, x) => string.Compare(x.AnimalSize.ToString(), y.AnimalSize.ToString()));
-            while (wagon.spaceLeft != 0 && availableHerbivores.Count > 0)
+            while (wagon.SpaceLeft != 0 && availableHerbivores.Count > 0)
             {
                 List<Animal> removeAnimal = new List<Animal>();
                 foreach (Animal herbivore in availableHerbivores)
                 {
-                    int preCalculate = wagon.spaceLeft - herbivore.AnimalSizeNumber;
+                    int preCalculate = wagon.SpaceLeft - herbivore.AnimalSizeNumber;
                     if (preCalculate >= 0)
                     {
                         wagon.animalsInWagon.Add(herbivore);
@@ -103,7 +103,7 @@ namespace CT_Logic
             }
         }
 
-        private static bool isCarnivore(Animal animal)
+        private static bool IsCarnivore(Animal animal)
         {
             if(animal.AnimalType.ToString() == "Carnivore")
             {
@@ -112,7 +112,7 @@ namespace CT_Logic
             return false;
         }
 
-        private static bool isHerbivore(Animal animal)
+        private static bool IsHerbivore(Animal animal)
         {
             if (animal.AnimalType.ToString() == "Herbivore")
             {

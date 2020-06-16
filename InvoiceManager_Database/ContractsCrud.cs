@@ -24,8 +24,7 @@ namespace InvoiceManager_Database
 
             String sql = sb.ToString();
 
-            Connection conn = new Connection();
-            var reader = conn.Select(sql);
+            var reader = _con.Select(sql);
 
             List<ContractDto> ContractList = new List<ContractDto>();
             while (reader.Read())
@@ -57,8 +56,7 @@ namespace InvoiceManager_Database
             sb.Append("VALUES ( '" + contract.Name + "', '" + contract.Description + "', '" + contract.Price + "' )");
             String sql = sb.ToString();
 
-            Connection conn = new Connection();
-            conn.Insert(sql);
+            _con.Insert(sql);
 
             return true;
         }
@@ -74,8 +72,7 @@ namespace InvoiceManager_Database
             sb.Append("WHERE Id = " + contract.Id);
             String sql = sb.ToString();
 
-            Connection conn = new Connection();
-            conn.Update(sql);
+            _con.Update(sql);
 
             return true;
         }
@@ -87,8 +84,7 @@ namespace InvoiceManager_Database
             sb.Append("WHERE Id = " + contract.Id);
             String sql = sb.ToString();
 
-            Connection conn = new Connection();
-            conn.Delete(sql);
+            _con.Delete(sql);
 
             return true;
         }

@@ -6,6 +6,7 @@ import {
   NbTreeGridModule,
   NbButtonModule,
   NbDatepickerModule,
+  NbSelectModule,
 } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -30,6 +31,7 @@ import { DatepickerComponent } from '../forms/datepicker/datepicker.component';
     FormsModule,
     ReactiveFormsModule,
     NbDatepickerModule,
+    NbSelectModule,
   ],
   declarations: [
     ...routedComponents,

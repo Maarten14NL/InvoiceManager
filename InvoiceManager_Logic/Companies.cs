@@ -55,7 +55,7 @@ namespace InvoiceManager_Logic
             return false;
         }
 
-        private CompanyDto SetContractDto(CompanyEntity company)
+        public CompanyDto SetContractDto(CompanyEntity company)
         {
             CompanyDto companyDto = new CompanyDto
             {

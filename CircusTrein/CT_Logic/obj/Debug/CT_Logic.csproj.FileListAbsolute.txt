@@ -3,3 +3,4 @@ C:\fontys\CircusTrein\CT_Logic\bin\Debug\CT_Logic.pdb
 C:\fontys\CircusTrein\CT_Logic\obj\Debug\CT_Logic.csprojAssemblyReference.cache
 C:\fontys\CircusTrein\CT_Logic\obj\Debug\CT_Logic.dll
 C:\fontys\CircusTrein\CT_Logic\obj\Debug\CT_Logic.pdb
+C:\fontys\CircusTrein\CT_Logic\obj\Debug\CT_Logic.csproj.CoreCompileInputs.cache

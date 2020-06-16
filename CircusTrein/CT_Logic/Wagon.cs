@@ -11,27 +11,17 @@ namespace CT_Logic
 
     public class Wagon
     {
-        private int space = 10;
-        public int spaceLeft
+        private readonly int space = 10;
+        public int  SpaceLeft
         {
             get
             {
-                return spaceFilled();
+                return SpaceFilled();
             }
         }
         public List<Animal> animalsInWagon = new List<Animal>();
 
-        public Wagon()
-            { 
-                //spaceLeft = 10 - spaceFilled();
-            }
-
-        //public void addAnimalToWagon(Animal animal)
-        //{
-        //    animalsInWagon.Add(animal);
-        //}
-
-        private int spaceFilled()
+        private int SpaceFilled()
         {
             int spaceUsed = 0;
             if (animalsInWagon != null)
@@ -42,7 +32,7 @@ namespace CT_Logic
                 }
             }
 
-            return 10 - spaceUsed;
+            return space - spaceUsed;
         }
 
         public override string ToString()
@@ -52,6 +42,4 @@ namespace CT_Logic
         }
 
     }
-
-    //private int wagonSpace = 10;
 }

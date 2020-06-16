@@ -51,7 +51,7 @@ namespace InvoiceManager_Logic
             return false;
         }
 
-        private ContractDto SetContractDto(ContractEntity contract)
+        public ContractDto SetContractDto(ContractEntity contract)
         {
             ContractDto contractDto = new ContractDto
             {

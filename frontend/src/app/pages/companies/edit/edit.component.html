@@ -1,4 +1,9 @@
 <nb-card>
+  <nb-card-header>
+    <button nbButton status="primary" routerLink="/companies">
+      <nb-icon icon="arrow-back-outline" pack="eva"></nb-icon>
+    </button>
+  </nb-card-header>
   <nb-card-body>
 
     <form [formGroup]="companyForm" (ngSubmit)="onSubmit(companyForm.value)">

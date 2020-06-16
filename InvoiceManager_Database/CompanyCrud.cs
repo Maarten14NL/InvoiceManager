@@ -15,16 +15,16 @@ namespace InvoiceManager_Database
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT ");
-            sb.Append("cm.Id as CompanyId, cm.Name AS CompanyName, cm.CustomerNumber AS CompanCustomerNumber, cm.Iban AS CompanyIban, cm.IbanAscription AS CompanyIbanAscription, cm.PhoneNumber AS CompanyPhoneNumber, cm.Website AS CompanyWebsite, cm.Email AS CompanyEmail, cm.MandateDate AS CompanyMandateDate, cm.Hide AS CompanyHide ");
+            sb.Append("cm.Id as CompanyId, cm.Name AS CompanyName, cm.CustomerNumber AS CompanCustomerNumber, cm.Iban AS CompanyIban, cm.IbanAscription AS CompanyIbanAscription, cm.PhoneNumber AS CompanyPhoneNumber, cm.Website AS CompanyWebsite, cm.Email AS CompanyEmail, cm.MandateDate AS CompanyMandateDate, cm.Hide AS CompanyHide, COALESCE(cc.cnt,0) as TotalContracts ");
             sb.Append("FROM [Companies] cm ");
+            sb.Append("LEFT OUTER JOIN (SELECT cc.CompanyId, count(*) cnt FROM [CompanyContract] cc GROUP BY cc.CompanyId) cc ON cm.Id = cc.CompanyId ");
             if (id != null)
             {
                 sb.Append("Where cm.Id = " + id);
             }
             String sql = sb.ToString();
-
-            Connection conn = new Connection();
-            var reader = conn.Select(sql);
+            
+            var reader = con.Select(sql);
 
             List<CompanyDto> ContractList = new List<CompanyDto>();
             while (reader.Read())
@@ -48,6 +48,7 @@ namespace InvoiceManager_Database
                 Website = Convert.ToString(data["CompanyWebsite"]),
                 Email = Convert.ToString(data["CompanyEmail"]),
                 MandateDate = Convert.ToDateTime(data["CompanyMandateDate"]),
+                TotalContracts = Convert.ToInt32(data["TotalContracts"]),
 
                 Hide = Convert.ToBoolean(data["CompanyHide"])
             };
@@ -60,11 +61,10 @@ namespace InvoiceManager_Database
             StringBuilder sb = new StringBuilder();
             sb.Append("INSERT INTO [Companies]");
             sb.Append("(Name, CustomerNumber, Iban, IbanAscription, PhoneNumber, Website, Email, MandateDate, Hide)");
-            sb.Append("VALUES ( '" + company.Name + "', '" + company.CustomerNumber + "', '" + company.Iban + "', '" + company.IbanAscription + "', '" + company.PhoneNumber + "', '" + company.Website + "', '" + company.Email + "', '" + company.MandateDate + "', 0 )");
+            sb.Append("VALUES ( '" + company.Name + "', '" + company.CustomerNumber + "', '" + company.Iban + "', '" + company.IbanAscription + "', '" + company.PhoneNumber + "', '" + company.Website + "', '" + company.Email + "', '" + company.ConvertNullableDateTimeToString(company.MandateDate) + "', 0 )");
             String sql = sb.ToString();
 
-            Connection conn = new Connection();
-            conn.Insert(sql);
+            con.Insert(sql);
 
             return true;
         }
@@ -80,14 +80,13 @@ namespace InvoiceManager_Database
             sb.Append("PhoneNumber = '" + company.PhoneNumber + "', ");
             sb.Append("Website = '" + company.Website + "', ");
             sb.Append("Email = '" + company.Email + "', ");
-            sb.Append("MandateDate = '" + company.MandateDate + "', ");
+            sb.Append("MandateDate = '" + company.ConvertNullableDateTimeToString(company.MandateDate) + "', ");
 
             sb.Append("Hide = '" + company.Hide + "' ");
             sb.Append("WHERE Id = " + company.Id);
             String sql = sb.ToString();
 
-            Connection conn = new Connection();
-            conn.Update(sql);
+            con.Update(sql);
 
             return true;
         }
@@ -99,8 +98,7 @@ namespace InvoiceManager_Database
             sb.Append("WHERE Id = " + company.Id);
             String sql = sb.ToString();
 
-            Connection conn = new Connection();
-            conn.Delete(sql);
+            con.Delete(sql);
 
             return true;
         }

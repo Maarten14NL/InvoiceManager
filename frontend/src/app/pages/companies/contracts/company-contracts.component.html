@@ -1,0 +1,111 @@
+<nb-card>
+  <nb-card-header>
+    <button nbButton status="primary" routerLink="/companies">
+      <nb-icon icon="arrow-back-outline" pack="eva"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+
+    <!-- <label class="search-label" for="search">Search: </label>
+    <input nbInput [nbFilterInput]="dataSource" id="search" class="search-input ml-3"> -->
+
+    <table class="table" [nbSort]="dataSource" (sort)="updateSort($event)">
+      <thead>
+        <tr>
+          <th scope="col">Contract</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Start date</th>
+          <th scope="col">End date</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let companyContract of companyContracts">
+          <th *ngIf="!companyContract.edit" scope="row">{{companyContract.Contract.Name}}</th>
+          <td *ngIf="!companyContract.edit">{{companyContract.Amount}}</td>
+          <td *ngIf="!companyContract.edit">{{companyContract.StartDate | date}}</td>
+          <td *ngIf="!companyContract.edit">{{companyContract.EndDate | date}}</td>
+          <td *ngIf="!companyContract.edit">
+            <button nbButton status="primary" (click)="companyContract.edit = true">
+              <nb-icon icon="edit" pack="eva"></nb-icon>
+            </button>
+          </td>
+
+          <th *ngIf="companyContract.edit" scope="row">
+            <nb-select [(ngModel)]="companyContract.Contract">
+              <nb-option *ngFor="let contract of contracts" [(value)]="contract">{{contract.Name}}</nb-option>
+            </nb-select>
+          </th>
+          <td *ngIf="companyContract.edit"><input type="number" nbInput fullWidth id="Amount" placeholder="Amount" [(ngModel)]="companyContract.Amount"></td>
+          <td *ngIf="companyContract.edit">
+            <input nbInput
+              [(ngModel)]="companyContract.StartDate"
+              placeholder="Form Picker"
+              [nbDatepicker]="EditStartDate">
+            <nb-datepicker #EditStartDate></nb-datepicker>
+          </td>
+          <td *ngIf="companyContract.edit">
+            <input nbInput
+              [(ngModel)]="companyContract.EndDate"
+              placeholder="Form Picker"
+              [nbDatepicker]="EditEndDate">
+            <nb-datepicker #EditEndDate></nb-datepicker>
+          </td>
+          <td *ngIf="companyContract.edit">
+            <button nbButton status="primary" (click)="companyContract.edit = false; Edit(companyContract);">
+              <nb-icon icon="checkmark-outline" pack="eva"></nb-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-body>
+    <form [formGroup]="newCompanyContract" (ngSubmit)="onSubmit(newCompanyContract.value)">
+      <div class="form-group row">
+        <label for="Contract" class="label col-sm-3 col-form-label">Contract</label>
+        <div class="col-sm-9">
+          <nb-select formControlName="Contract" id="Contract" placeholder="Contract">
+            <nb-option *ngFor="let contract of contracts" [(value)]="contract">{{contract.Name}}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Amount" class="label col-sm-3 col-form-label">Amount</label>
+        <div class="col-sm-9">
+          <input type="number" nbInput fullWidth id="Amount" formControlName="Amount" placeholder="Amount">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="StartDate" class="label col-sm-3 col-form-label">Start date</label>
+        <div class="col-sm-9">
+          <input nbInput
+            formControlName="StartDate"
+            placeholder="Start date"
+            [nbDatepicker]="StartDate">
+          <nb-datepicker #StartDate></nb-datepicker>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="EndDate" class="label col-sm-3 col-form-label">End date</label>
+        <div class="col-sm-9">
+          <input nbInput
+            formControlName="EndDate"
+            placeholder="End date"
+            [nbDatepicker]="EndDate">
+          <nb-datepicker #EndDate></nb-datepicker>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="offset-sm-3 col-sm-9">
+          <button type="submit" nbButton status="primary">Add Contract</button>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>
