@@ -17,7 +17,7 @@ namespace InvoiceMananger_DatabaseInterface
 
         public string ConvertNullableDateTimeToString(Nullable<DateTime> dateTime)
         {
-            return (dateTime != null) ? dateTime.Value.ToString("yyyy-MM-dd HH:mm:ss") : null;
+            return dateTime?.ToString("yyyy-MM-dd HH:mm:ss");
         }
     }
 }

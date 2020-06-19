@@ -29,7 +29,5 @@ namespace InvoiceManager.Models
         {
             return new ApplicationDbContext();
         }
-
-        public DbSet<Contract> Contracts { get; set; }
     }
 }

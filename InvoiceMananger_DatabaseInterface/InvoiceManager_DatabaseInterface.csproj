@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompanyContractDto.cs" />
+    <Compile Include="CompanyDto.cs" />
+    <Compile Include="ContractDto.cs" />
     <Compile Include="ICompany.cs" />
     <Compile Include="ICompanyContracts.cs" />
     <Compile Include="IContract.cs" />
