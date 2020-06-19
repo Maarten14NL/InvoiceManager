@@ -38,8 +38,8 @@ namespace InvoiceManager_Logic.Entities
         public bool Valid()
         {
             if (
-                Name == null ||
-                Description == null ||
+                Name == "" ||
+                Description == "" ||
                 Price == 0
                 )
             {

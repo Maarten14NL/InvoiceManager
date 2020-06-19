@@ -39,7 +39,7 @@ namespace InvoiceManager_Logic
 
         public bool Update(CompanyEntity company)
         {
-            if (company.Valid())
+            if (company.Valid() && company.Id >= 0)
             {
                 return _CompanyDal.Update(SetContractDto(company));
             }

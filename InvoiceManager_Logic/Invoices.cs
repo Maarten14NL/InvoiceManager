@@ -16,11 +16,11 @@ namespace InvoiceManager_Logic
             //companies = c.Read(1);
             foreach (CompanyEntity company in companies)
             {
-               new GenerateInvoice(storagePath, FindAndReplace(company), TableFields(company));
+               new GenerateInvoice(storagePath, FindAndReplaceList(company), TableFieldsList(company));
             }
         }
 
-        private List<PlaceHolder> FindAndReplace(CompanyEntity company)
+        private List<PlaceHolder> FindAndReplaceList(CompanyEntity company)
         {
             List<PlaceHolder> replaceWords = new List<PlaceHolder>
                 {
@@ -41,7 +41,7 @@ namespace InvoiceManager_Logic
             return replaceWords;
         }
 
-        private List<List<PlaceHolder>> TableFields(CompanyEntity company)
+        private List<List<PlaceHolder>> TableFieldsList(CompanyEntity company)
         {
             CompanyContracts cc = new CompanyContracts();
             List<CompanyContractsEntity> companyContractsList = cc.GetByCompany(company.Id);

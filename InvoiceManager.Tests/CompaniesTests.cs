@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using InvoiceManager_Logic;
+using InvoiceManager_Logic.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace InvoiceManager_Logic.Tests
         public void CreateWithOutName()
         {
             // error
-            CompanyEntity ce = new CompanyEntity(0, null, _customerNumber, _iban, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(0, "", _customerNumber, _iban, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
             if (Create(ce))
             {
                 Assert.Fail();
@@ -52,7 +53,7 @@ namespace InvoiceManager_Logic.Tests
         public void CreateWithOutCustomerNumber()
         {
             // success
-            CompanyEntity ce = new CompanyEntity(0, _name, null, _iban, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(0, _name, "", _iban, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
             if (!Create(ce))
             {
                 Assert.Fail();
@@ -63,7 +64,7 @@ namespace InvoiceManager_Logic.Tests
         public void CreateWithOutIban()
         {
             // error
-            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, null, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, "", _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
             if (Create(ce))
             {
                 Assert.Fail();
@@ -74,7 +75,7 @@ namespace InvoiceManager_Logic.Tests
         public void CreateWithOutIbanAscription()
         {
             // error
-            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, _iban, null, _phoneNumber, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, _iban, "", _phoneNumber, _website, _email, _mandateDate, _hide);
             if (Create(ce))
             {
                 Assert.Fail();
@@ -85,7 +86,7 @@ namespace InvoiceManager_Logic.Tests
         public void CreateWithOutEmail()
         {
             // error
-            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, _iban, _ibanAscription, _phoneNumber, _website, null, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, _iban, _ibanAscription, _phoneNumber, _website, "", _mandateDate, _hide);
             if (Create(ce))
             {
                 Assert.Fail();
@@ -96,7 +97,7 @@ namespace InvoiceManager_Logic.Tests
         public void CreateWithOutWebsite()
         {
             // success
-            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, _iban, _ibanAscription, _phoneNumber, null, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, _iban, _ibanAscription, _phoneNumber, "", _email, _mandateDate, _hide);
             if (!Create(ce))
             {
                 Assert.Fail();
@@ -107,7 +108,7 @@ namespace InvoiceManager_Logic.Tests
         public void CreateWithPhoneNumber()
         {
             // success
-            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, _iban, _ibanAscription, null, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(0, _name, _customerNumber, _iban, _ibanAscription, "", _website, _email, _mandateDate, _hide);
             if (!Create(ce))
             {
                 Assert.Fail();
@@ -153,7 +154,7 @@ namespace InvoiceManager_Logic.Tests
         public void UpdateWithOutName()
         {
             // error
-            CompanyEntity ce = new CompanyEntity(Id, null, _customerNumber, _iban, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(Id, "", _customerNumber, _iban, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
             if (Update(ce))
             {
                 Assert.Fail();
@@ -164,7 +165,7 @@ namespace InvoiceManager_Logic.Tests
         public void UpdateWithOutCustomerNumber()
         {
             // succes
-            CompanyEntity ce = new CompanyEntity(Id, _name, null, _iban, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(Id, _name, "", _iban, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
             if (!Update(ce))
             {
                 Assert.Fail();
@@ -174,7 +175,7 @@ namespace InvoiceManager_Logic.Tests
         public void UpdateWithOutIban()
         {
             // error
-            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, null, _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, "", _ibanAscription, _phoneNumber, _website, _email, _mandateDate, _hide);
             if (Update(ce))
             {
                 Assert.Fail();
@@ -185,7 +186,7 @@ namespace InvoiceManager_Logic.Tests
         public void UpdateWithOutIbanAscription()
         {
             // error
-            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, _iban, null, _phoneNumber, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, _iban, "", _phoneNumber, _website, _email, _mandateDate, _hide);
             if (Update(ce))
             {
                 Assert.Fail();
@@ -196,7 +197,7 @@ namespace InvoiceManager_Logic.Tests
         public void UpdateWithPhoneNumber()
         {
             // success
-            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, _iban, _ibanAscription, null, _website, _email, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, _iban, _ibanAscription, "", _website, _email, _mandateDate, _hide);
             if (!Update(ce))
             {
                 Assert.Fail();
@@ -207,7 +208,7 @@ namespace InvoiceManager_Logic.Tests
         public void UpdateWithOutWebsite()
         {
             // success
-            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, _iban, _ibanAscription, _phoneNumber, null, _email, _mandateDate,_hide);
+            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, _iban, _ibanAscription, _phoneNumber, "", _email, _mandateDate,_hide);
             if (!Update(ce))
             {
                 Assert.Fail();
@@ -218,7 +219,7 @@ namespace InvoiceManager_Logic.Tests
         public void UpdateWithOutEmail()
         {
             // error
-            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, _iban, _ibanAscription, _phoneNumber, _website, null, _mandateDate, _hide);
+            CompanyEntity ce = new CompanyEntity(Id, _name, _customerNumber, _iban, _ibanAscription, _phoneNumber, _website, "", _mandateDate, _hide);
             if (Update(ce))
             {
                 Assert.Fail();

@@ -34,7 +34,7 @@ namespace InvoiceManager_Logic.Tests
         [TestMethod()]
         public void CreateWithOutName()
         {
-            ContractEntity ce = new ContractEntity(0, null, _description, _price, _hide);
+            ContractEntity ce = new ContractEntity(0, "", _description, _price, _hide);
             if (CreateTest(ce))
             {
                 Assert.Fail();
@@ -44,7 +44,7 @@ namespace InvoiceManager_Logic.Tests
         [TestMethod()]
         public void CreateWithOutDescription()
         {
-            ContractEntity ce = new ContractEntity(0, _name, null, _price, _hide);
+            ContractEntity ce = new ContractEntity(0, _name, "", _price, _hide);
             if (CreateTest(ce))
             {
                 Assert.Fail();
@@ -84,7 +84,7 @@ namespace InvoiceManager_Logic.Tests
         [TestMethod()]
         public void UpdateWithOutName()
         {
-            ContractEntity ce = new ContractEntity(_id, null, _description, _price, _hide);
+            ContractEntity ce = new ContractEntity(_id, "", _description, _price, _hide);
             if (UpdateTest(ce))
             {
                 Assert.Fail();
@@ -94,7 +94,7 @@ namespace InvoiceManager_Logic.Tests
         [TestMethod()]
         public void UpdateWithOutDescription()
         {
-            ContractEntity ce = new ContractEntity(_id, _name, null, _price, _hide);
+            ContractEntity ce = new ContractEntity(_id, _name, "", _price, _hide);
             if (UpdateTest(ce))
             {
                 Assert.Fail();

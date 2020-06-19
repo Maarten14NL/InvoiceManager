@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Reflection;
 using word = Microsoft.Office.Interop.Word;
 using System.Web;
-using InvoiceManager_Logic.Invoice;
 using System.Web.UI.WebControls;
 
 namespace InvoiceManager_Logic

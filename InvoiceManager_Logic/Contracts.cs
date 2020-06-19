@@ -35,7 +35,7 @@ namespace InvoiceManager_Logic
 
         public bool Update(ContractEntity contract)
         {
-            if (contract.Valid())
+            if (contract.Valid() && contract.Id >= 0)
             {
                 return _ContractDal.Update(SetContractDto(contract));
             }
