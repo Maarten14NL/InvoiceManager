@@ -14,13 +14,4 @@ namespace InvoiceMananger_DatabaseInterface
         bool Delete(ContractDto company);
 
     }
-
-    public struct ContractDto
-    {
-        public int Id;
-        public string Name;
-        public string Description;
-        public double Price;
-        public bool Hide;
-    }
 }
